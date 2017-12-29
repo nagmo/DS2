@@ -12,5 +12,9 @@ MinHeap::MinHeap(int n, int* idsArray) : data(DynamicArray<GroupId>(n, idsArray)
 }
 
 void MinHeap::siftDown(int i){
-    data.swap(i, data.getMinOfThreeIndexes(i, i * 2 + 1, (i + 1) * 2));
+    if(i > data.numOfElements()/2) return;
+    int newIndex = data.getMinOfThreeIndexes(i, i * 2 + 1, (i + 1) * 2);
+    if(newIndex == i) return;
+    data.swap(i, newIndex);
+    siftDown(newIndex);
 }

@@ -38,6 +38,8 @@ public:
     
     int length();
 
+    int numOfElements();
+
 private:
     T* data;
     int maxSize;
@@ -105,6 +107,10 @@ bool DynamicArray<T>::isEmpty(int index){
 template <class T>
 int DynamicArray<T>::length(){
     return maxSize;
+}
+template <class T>
+int DynamicArray<T>::numOfElements(){
+    return numberOfElements;
 }
 
 template <class T>
