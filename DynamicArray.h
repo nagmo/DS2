@@ -22,6 +22,8 @@ public:
 
     DynamicArray(int n);
 
+    DynamicArray(int n, T* arr);
+
     ~DynamicArray();
 
     T& operator[](int index);
@@ -31,6 +33,8 @@ public:
     void swap(int i, int j);
 
     bool isEmpty(int index);
+
+    int getMinOfThreeIndexes(int i, int j, int k);
     
     int length();
 
@@ -49,6 +53,15 @@ template <class T>
 DynamicArray<T>::DynamicArray(int n) : maxSize(n), numberOfElements(0){
     data = new T[n];
 }
+
+template <class T>
+DynamicArray<T>::DynamicArray(int n, T* arr) : maxSize(n*2), numberOfElements(n){
+    data = new T[n*2];
+    for (int i = 0; i < n; ++i) {
+        data[i] = arr[i];
+    }
+}
+
 
 template <class T>
 DynamicArray<T>::~DynamicArray(){
@@ -92,6 +105,15 @@ bool DynamicArray<T>::isEmpty(int index){
 template <class T>
 int DynamicArray<T>::length(){
     return maxSize;
+}
+
+template <class T>
+int DynamicArray<T>::getMinOfThreeIndexes(int i, int j, int k){
+    if(data[i] < data[j]){
+        if(data[i] < data[k]) return i;
+        return k;
+    }
+    return (data[j] < data[k]) ? j : k;
 }
 
 /**
