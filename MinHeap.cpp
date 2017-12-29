@@ -7,10 +7,6 @@ using MinHeapExceptions::FailureException;
 MinHeap::MinHeap(int n, TrainingGroup* idsArray) : data(DynamicArray<TrainingGroup>(n, idsArray)){
     for (int i = n/2 - 1; i >= 0 ; i--) {
         siftDown(i);
-        for (int j = 0; j < n; ++j) {
-            printf("%d ", data[j]);
-        }
-        printf("\n");
     }
 }
 
@@ -39,8 +35,4 @@ void MinHeap::siftUp(int i){
         data.swap(i,i/2);
         i /= 2;
     }
-    for (int j = 0; j < data.numOfElements(); ++j) {
-        printf("%d ", data[j]);
-    }
-    printf("\n");
 }

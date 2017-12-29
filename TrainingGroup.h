@@ -6,6 +6,9 @@
 class TrainingGroup {
 public:
 
+    /**
+     * empty constructor that sais this element is void
+     */
     TrainingGroup();
 
     TrainingGroup(int n);
@@ -17,6 +20,8 @@ public:
     bool operator>(TrainingGroup&);
 
     bool operator<(TrainingGroup&);
+
+    void disActivate();
 private:
     GroupId id;
     bool isActive;

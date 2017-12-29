@@ -2,9 +2,6 @@
 #define DS2_DYNAMICARRAY_H
 
 
-#include <cstdio>
-
-//TODO: Nevo - I think we should change it to exceptions
 enum ArrayReturnValues{
     ArraySuccess,
     ArrayExpand,
@@ -19,25 +16,63 @@ enum ArrayReturnValues{
 template<class T>
 class DynamicArray {
 public:
-
+    /**
+     * cretes array with size n
+     * @param n
+     */
     DynamicArray(int n);
 
+    /**
+     * fill the array with the given values
+     * @param n
+     * @param arr
+     */
     DynamicArray(int n, T* arr);
 
     ~DynamicArray();
 
+    /**
+     * returns the element in the index
+     * @param index
+     * @return
+     */
     T& operator[](int index);
 
+    /**
+     * add new value to the array
+     * @param data
+     * @param index
+     * @return expand - if there was array expansion
+     */
     ArrayReturnValues insert(T& data, int index);
 
+    /**
+     * swap values in the i j indexes
+     * @param i
+     * @param j
+     */
     void swap(int i, int j);
 
+    /**
+     * check if cell is empty
+     */
     bool isEmpty(int index);
 
+    /**
+     * returns the index of the minimal value from the i j k indexes
+     * @param i
+     * @param j
+     * @param k
+     * @return
+     */
     int getMinOfThreeIndexes(int i, int j, int k);
     
     int length();
 
+    /**
+     * returns the number of elements in the array
+     * @return
+     */
     int numOfElements();
 
 private:

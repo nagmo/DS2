@@ -7,11 +7,26 @@
 
 class MinHeap {
 public:
+    /**
+     * create a heap from array
+     * @param n - length
+     * @param idsArray
+     */
     MinHeap(int n, TrainingGroup* idsArray);
 
+    /**
+     * add new group to the heap
+     * need to check if is exists before using this function
+     * @param trainingGroup
+     */
     void addGroup(TrainingGroup& trainingGroup);
 
+    /**
+     * returns the minimal group that is active
+     * @return
+     */
     TrainingGroup& getMinGroup();
+
 
 private:
     DynamicArray<TrainingGroup> data;
