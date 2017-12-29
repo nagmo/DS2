@@ -4,16 +4,17 @@
 
 #include <cstdio>
 
+//TODO: Nevo - I think we should change it to exceptions
 enum ArrayReturnValues{
     ArraySuccess,
     ArrayExpand,
-    ArraySlice
 };
 
 /**
  * Generic class of Dynamic Array
- * T has to implement IsEmpty() and SetEmpty() - to an illegal value of T type
- * T has an empty constructor T()
+ * T implements IsVoid() method
+ * T has an empty constructor T() that creates a "void T"
+ * T has copy c'tor
  */
 template<class T>
 class DynamicArray {
@@ -27,8 +28,10 @@ public:
 
     ArrayReturnValues insert(T& data, int index);
 
-    ArrayReturnValues remove(int index);
+    void swap(int i, int j);
 
+    bool isEmpty(int index);
+    
     int length();
 
 private:
@@ -40,19 +43,11 @@ private:
      * make the array twice bigger
      */
     void extractArray();
-
-    /**
-    * make the array half size
-    */
-    void sliceArray();
 };
 
 template <class T>
 DynamicArray<T>::DynamicArray(int n) : maxSize(n), numberOfElements(0){
     data = new T[n];
-    for(int i = 0; i < n; i++){
-        data[i].SetEmpty();
-    }
 }
 
 template <class T>
@@ -64,11 +59,11 @@ DynamicArray<T>::~DynamicArray(){
 template <class T>
 ArrayReturnValues DynamicArray<T>::insert(T& newData, int index){
     //case of new data - add 1 to items
-    if(data[index].IsEmpty()) numberOfElements++;
+    if(data[index].isVoid()) numberOfElements++;
     //delete data[index];
     data[index] = T(newData);
     //check if need expand
-    if(numberOfElements > maxSize/2){
+    if(numberOfElements >= maxSize/2){
         extractArray();
         return ArrayExpand;
     }
@@ -76,24 +71,23 @@ ArrayReturnValues DynamicArray<T>::insert(T& newData, int index){
 }
 
 template <class T>
-ArrayReturnValues DynamicArray<T>::remove(int index){
-    //case of new data - add 1 to items
-    if(data[index].IsEmpty())
-        return ArraySuccess;
-    numberOfElements--;
-    data[index].SetEmpty();
-    //check if need expand
-    if(numberOfElements < maxSize/4){
-        sliceArray();
-        return ArraySlice;
-    }
-    return ArraySuccess;
+void DynamicArray<T>::swap(int i, int j){
+    //creating temp with copy c'tor
+    T temp = data[i];
+    data[i] = data[j];
+    data[j] = temp;
 }
 
 template <class T>
 T& DynamicArray<T>::operator[](int index){
     return data[index];
 }
+
+template <class T>
+bool DynamicArray<T>::isEmpty(int index){
+    return data[index].isVoid();
+}
+
 
 template <class T>
 int DynamicArray<T>::length(){
@@ -112,20 +106,6 @@ void DynamicArray<T>::extractArray(){
     delete [] data;
     data = newArray;
     maxSize *= 2;
-}
-
-/**
-* make the array half size
-*/
-template <class T>
-void DynamicArray<T>::sliceArray(){
-    T* newArray = new T[maxSize/2];
-    for (int i = 0; i < maxSize/2; ++i) {
-        newArray[i] = data[i];
-    }
-    delete [] data;
-    data = newArray;
-    maxSize = maxSize/2;
 }
 
 #endif //DS2_DYNAMICARRAY_H
