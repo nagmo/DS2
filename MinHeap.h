@@ -7,14 +7,24 @@
 
 class MinHeap {
 public:
-    MinHeap(int n, int* idsArray);
+    MinHeap(int n, TrainingGroup* idsArray);
+
+    void addGroup(TrainingGroup& trainingGroup);
+
+    TrainingGroup& getMinGroup();
+
+private:
+    DynamicArray<TrainingGroup> data;
 
     void siftDown(int i);
 
+    void siftUp(int i);
 
-private:
-    DynamicArray<GroupId> data;
 };
 
+namespace MinHeapExceptions{
+    using std::exception;
 
+    class FailureException : exception{};
+}
 #endif //DS2_MINHEAP_H

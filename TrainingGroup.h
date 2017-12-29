@@ -12,6 +12,11 @@ public:
 
     bool isVoid();
 
+    bool operator==(TrainingGroup&);
+
+    bool operator>(TrainingGroup&);
+
+    bool operator<(TrainingGroup&);
 private:
     GroupId id;
     bool isActive;

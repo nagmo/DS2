@@ -115,6 +115,9 @@ int DynamicArray<T>::numOfElements(){
 
 template <class T>
 int DynamicArray<T>::getMinOfThreeIndexes(int i, int j, int k){
+    //case of k is void (i cant be void)
+    if(data[j].isVoid()) return i;
+    if(data[k].isVoid()) return (data[i] < data[j]) ? i : j;
     if(data[i] < data[j]){
         if(data[i] < data[k]) return i;
         return k;
