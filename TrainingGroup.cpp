@@ -25,7 +25,6 @@ void TrainingGroup::disActivate(){
     isActive = false;
 }
 
-<<<<<<< HEAD
 void TrainingGroup::setIndex(int i){
     index = i;
 }
@@ -38,9 +37,9 @@ void TrainingGroup::setHeapPointer(void* pointer){
     heap = pointer;
 }
 
-void* TrainingGroup::getHeapPointer(){
+void* TrainingGroup::getHeapPointer() {
     return heap;
-=======
+}
 
 GroupId TrainingGroup::GetID() {
     return id;
@@ -59,5 +58,4 @@ void HashTrainingGroup::addGladiator(Gladiator& gladiator) {
 
 int HashTrainingGroup::TopKGladsScore(int k) {
     return 0;
->>>>>>> 43b6ee6943aba5c57c85b31a3352e90047f32336
 }
