@@ -1,6 +1,7 @@
 #ifndef DS2_DYNAMICARRAY_H
 #define DS2_DYNAMICARRAY_H
 
+#include <type_traits>
 
 enum ArrayReturnValues{
     ArraySuccess,
@@ -27,7 +28,7 @@ public:
      * @param n
      * @param arr
      */
-    DynamicArray(int n, T* arr);
+    DynamicArray(int n, T** arr);
 
     ~DynamicArray();
 
@@ -76,7 +77,7 @@ public:
     int numOfElements();
 
 private:
-    T* data;
+    T** data;
     int maxSize;
     int numberOfElements;
 
@@ -86,22 +87,30 @@ private:
     void extractArray();
 };
 
+using std::is_pointer;
+
 template <class T>
 DynamicArray<T>::DynamicArray(int n) : maxSize(n), numberOfElements(0){
     data = new T[n];
 }
 
 template <class T>
-DynamicArray<T>::DynamicArray(int n, T* arr) : maxSize(n*2), numberOfElements(n){
-    data = new T[n*2];
+DynamicArray<T>::DynamicArray(int n, T** arr) : maxSize(n*2), numberOfElements(n){
+    data = new T*[n*2];
     for (int i = 0; i < n; ++i) {
         data[i] = arr[i];
+    }
+    for (int i = n; i < maxSize ; i++) {
+        data[i] = new T();
     }
 }
 
 
 template <class T>
 DynamicArray<T>::~DynamicArray(){
+    for (int i = 0; i < maxSize; ++i) {
+        delete data[i];
+    }
     delete [] data;
 }
 
@@ -109,33 +118,33 @@ DynamicArray<T>::~DynamicArray(){
 template <class T>
 T& DynamicArray<T>::insert(T& newData, int index){
     //case of new data - add 1 to items
-    if((data[index]).isVoid()) numberOfElements++;
+    if(data[index] && (data[index])->isVoid()) numberOfElements++;
     //delete data[index];
-    data[index] = (T)(newData);
+    data[index] = new T(newData);
     //check if need expand
     if(numberOfElements >= maxSize/2){
         extractArray();
         //TODO: throw somthing
     }
-    return data[index];
+    return *(data[index]);
 }
 
 template <class T>
 void DynamicArray<T>::swap(int i, int j){
     //creating temp with copy c'tor
-    T temp = data[i];
+    T* temp = data[i];
     data[i] = data[j];
     data[j] = temp;
 }
 
 template <class T>
 T& DynamicArray<T>::operator[](int index){
-    return data[index];
+    return *(data[index]);
 }
 
 template <class T>
 bool DynamicArray<T>::isEmpty(int index){
-    return data[index].isVoid();
+    return data[index]->isVoid();
 }
 
 
@@ -151,13 +160,13 @@ int DynamicArray<T>::numOfElements(){
 template <class T>
 int DynamicArray<T>::getMinOfThreeIndexes(int i, int j, int k){
     //case of k is void (i cant be void)
-    if(data[j].isVoid()) return i;
-    if(data[k].isVoid()) return (data[i] < data[j]) ? i : j;
-    if(data[i] < data[j]){
-        if(data[i] < data[k]) return i;
+    if(data[j] && data[j]->isVoid()) return i;
+    if(data[k] && data[k]->isVoid()) return ((*data[i]) < (*data[j])) ? i : j;
+    if(*data[i] < *data[j]){
+        if(*data[i] < *data[k]) return i;
         return k;
     }
-    return (data[j] < data[k]) ? j : k;
+    return (*data[j] < *data[k]) ? j : k;
 }
 
 /**
@@ -165,9 +174,13 @@ int DynamicArray<T>::getMinOfThreeIndexes(int i, int j, int k){
  */
 template <class T>
 void DynamicArray<T>::extractArray(){
-    T* newArray = new T[2*maxSize];
+    T** newArray = new T*[2*maxSize];
     for (int i = 0; i < maxSize; ++i) {
         newArray[i] = data[i];
+    }
+    //fill with empty values
+    for(int i = maxSize; i < maxSize*2; i++){
+        newArray[i] = new T();
     }
     delete [] data;
     data = newArray;

@@ -12,7 +12,7 @@ public:
      * @param n - length
      * @param idsArray
      */
-    MinHeap(int n, TrainingGroup* idsArray);
+    MinHeap(int n, TrainingGroup** idsArray);
 
     /**
      * add new group to the heap

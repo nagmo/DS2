@@ -4,13 +4,14 @@
 using MinHeapExceptions::FailureException;
 
 
-MinHeap::MinHeap(int n, TrainingGroup* idsArray) : data(DynamicArray<TrainingGroup>(n, idsArray)){
-    //arange the array
+MinHeap::MinHeap(int n, TrainingGroup** idsArray) : data(DynamicArray<TrainingGroup>(n, idsArray)){
+    //arrange the array
     for (int i = n/2 - 1; i >= 0 ; i--) {
         siftDown(i);
     }
     //set to each group its index in the array and the pointer to the heap
-    for (int i = 0; i < n; i++) {
+    int length = data.length();
+    for (int i = 0; i < length; i++) {
         data[i].setIndex(i);
         data[i].setHeapPointer(this);
     }
@@ -19,6 +20,7 @@ MinHeap::MinHeap(int n, TrainingGroup* idsArray) : data(DynamicArray<TrainingGro
 TrainingGroup& MinHeap::addGroup(TrainingGroup& trainingGroup){
     int numOfElements =  data.numOfElements();
     TrainingGroup& newGroup = data.insert(trainingGroup, numOfElements);
+    newGroup.setHeapPointer(this);
     //now numOfelements is one bigger
     siftUp(numOfElements);
     return newGroup;
