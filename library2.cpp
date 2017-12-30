@@ -9,9 +9,8 @@ void* init(int n, int *trainingGroupsIDs){
         colosseum = new Colosseum(n, trainingGroupsIDs);
     }catch(std::bad_alloc&){
         return NULL;
-    }catch(){
-
     }
+    //TODO add catch?
     return (void*) colosseum;
 }
 
@@ -81,7 +80,7 @@ StatusType getMinTrainingGroup(void *DS, int *trainingGroup){
 */
 void quit(void** DS){
     if(*DS == NULL) return;
-    delete (*DS);
+    delete (Colosseum*)(*DS);
     *DS = NULL;
 }
 

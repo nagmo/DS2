@@ -11,6 +11,7 @@
 class TrainingGroupHashTable {
 public:
 
+    TrainingGroupHashTable();
     /**
      * constructor for the training groups hash table.
      * initialize the table by the array of ID's received.

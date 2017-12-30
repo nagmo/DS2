@@ -2,6 +2,8 @@
 #include <clocale>
 #include "TrainingGroupHashTable.h"
 
+TrainingGroupHashTable::TrainingGroupHashTable() : array(NULL), sizeOfHashTable(0){}
+
 /**
  * constructor for the training groups hash table.
  * initialize the table by the array of training groups received.
