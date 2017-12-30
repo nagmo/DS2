@@ -22,9 +22,25 @@ public:
     bool operator<(TrainingGroup&);
 
     void disActivate();
+
+    void setIndex(int);
+
+    int getIndex();
+
+    void setHeapPointer(void* pointer);
+
+    void* getHeapPointer();
 private:
     GroupId id;
     bool isActive;
+    /**
+     * the group index in the heap
+     */
+    int index;
+    /**
+     * pointer to the heap that this group is in it
+     */
+    void* heap;
 };
 
 

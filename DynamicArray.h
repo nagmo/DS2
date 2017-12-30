@@ -17,7 +17,7 @@ template<class T>
 class DynamicArray {
 public:
     /**
-     * cretes array with size n
+     * creates array size n
      * @param n
      */
     DynamicArray(int n);
@@ -44,7 +44,7 @@ public:
      * @param index
      * @return expand - if there was array expansion
      */
-    ArrayReturnValues insert(T& data, int index);
+    T& insert(T& data, int index);
 
     /**
      * swap values in the i j indexes
@@ -107,17 +107,17 @@ DynamicArray<T>::~DynamicArray(){
 
 
 template <class T>
-ArrayReturnValues DynamicArray<T>::insert(T& newData, int index){
+T& DynamicArray<T>::insert(T& newData, int index){
     //case of new data - add 1 to items
-    if(data[index].isVoid()) numberOfElements++;
+    if((data[index]).isVoid()) numberOfElements++;
     //delete data[index];
-    data[index] = T(newData);
+    data[index] = (T)(newData);
     //check if need expand
     if(numberOfElements >= maxSize/2){
         extractArray();
-        return ArrayExpand;
+        //TODO: throw somthing
     }
-    return ArraySuccess;
+    return data[index];
 }
 
 template <class T>

@@ -19,13 +19,15 @@ public:
      * need to check if is exists before using this function
      * @param trainingGroup
      */
-    void addGroup(TrainingGroup& trainingGroup);
+    TrainingGroup& addGroup(TrainingGroup& trainingGroup);
 
     /**
      * returns the minimal group that is active
      * @return
      */
     TrainingGroup& getMinGroup();
+
+    void disActiveGroup(int);
 
 
 private:

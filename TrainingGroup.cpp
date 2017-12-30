@@ -26,3 +26,19 @@ bool TrainingGroup::operator<(TrainingGroup& trainingGroup){
 void TrainingGroup::disActivate(){
     isActive = false;
 }
+
+void TrainingGroup::setIndex(int i){
+    index = i;
+}
+
+int TrainingGroup::getIndex(){
+    return index;
+}
+
+void TrainingGroup::setHeapPointer(void* pointer){
+    heap = pointer;
+}
+
+void* TrainingGroup::getHeapPointer(){
+    return heap;
+}
