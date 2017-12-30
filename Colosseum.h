@@ -21,7 +21,7 @@ public:
 
 private:
     MinHeap heapGroup;
-    HashTrainingGroup hashGroup;
+    TrainingGroupHashTable hashGroup;
 };
 
 namespace ColosseumException{
