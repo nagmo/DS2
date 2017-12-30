@@ -7,9 +7,9 @@
 class Gladiator {
 
 public:
-    Gladiator(GladiatorID, Level);
+    Gladiator(GladiatorID, int);
 
-    Level getLevel();
+    int GetScore();
 
     GladiatorID getId();
     /**
@@ -34,7 +34,7 @@ public:
 private:
 
     GladiatorID id;
-    Level level;
+    int score;
 };
 
 #endif //DS2_GLADIATOR_H

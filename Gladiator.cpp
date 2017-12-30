@@ -1,11 +1,11 @@
 
 #include "Gladiator.h"
 
-Gladiator::Gladiator(GladiatorID id, Level level) : id(id), level(level){}
+Gladiator::Gladiator(GladiatorID id, int score) : id(id), score(score){}
 
 
-Level Gladiator::getLevel(){
-    return level;
+Level Gladiator::GetScore(){
+    return score;
 }
 
 GladiatorID Gladiator::getId(){

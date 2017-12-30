@@ -5,8 +5,8 @@
 #include "DynamicArray.h"
 #include "utilities.h"
 #include "TrainingGroup.h"
+#include "Gladiator.h"
 
-class Gladiator{};
 
 class TrainingGroupHashTable {
 public:
@@ -17,7 +17,7 @@ public:
      * @param numOfGroups - number of groups to start with
      * @param trainingGroupsID - int array of training groups ID numbers
      */
-    TrainingGroupHashTable(int numOfGroups, HashTrainingGroup& *trainingGroupsID);
+    TrainingGroupHashTable(int numOfGroups, HashTrainingGroup* &trainingGroupsID);
 
     ~TrainingGroupHashTable();
 
@@ -48,7 +48,7 @@ public:
 
 private:
 
-    DynamicArray* array;
+    DynamicArray<HashTrainingGroup>* array;
     int sizeOfHashTable;
 
     /**

@@ -1,12 +1,8 @@
 #ifndef DS2_DYNAMICARRAY_H
 #define DS2_DYNAMICARRAY_H
 
-#include <type_traits>
+//#include <type_traits>
 
-enum ArrayReturnValues{
-    ArraySuccess,
-    ArrayExpand,
-};
 
 /**
  * Generic class of Dynamic Array
@@ -87,11 +83,13 @@ private:
     void expandArray();
 };
 
-using std::is_pointer;
+namespace DynamicArrayException{
+    class ArrayExpand{};
+}
 
 template <class T>
 DynamicArray<T>::DynamicArray(int n) : maxSize(n), numberOfElements(0){
-    data = new T[n];
+    data = new T*[n];
 }
 
 template <class T>
@@ -124,7 +122,7 @@ T& DynamicArray<T>::insert(T& newData, int index){
     //check if need expand
     if(numberOfElements >= maxSize/2){
         expandArray();
-        //TODO: throw somthing
+        throw DynamicArrayException::ArrayExpand();
     }
     return *(data[index]);
 }

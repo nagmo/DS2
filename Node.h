@@ -3,8 +3,7 @@
 #define DS2_NODE_H
 
 #include <clocale>
-
-class Gladiator;
+#include "Gladiator.h"
 
 namespace TreeExceptions{
     class GladiatorExists{};
@@ -48,10 +47,10 @@ public:
 
     void AddGladiator(Gladiator& gladiator){
         //if gladiator exist throw exception
-        if(gladiator == this->gladiator)
+        if(gladiator == *(this->gladiator))
             throw TreeExceptions::GladiatorExists();
         //find the place for the gladiator.
-        if(gladiator > this->gladiator){
+        if(gladiator > *(this->gladiator)){
             if(right == NULL){
                 right = new Node(gladiator);
                 //if added a gladiator update weight and score.
@@ -61,7 +60,7 @@ public:
             }
             right->AddGladiator(gladiator);
             weight++;
-            subTreeScore = left->subTreeScore + right->subTreeScore + (this->gladiator).GetScore();
+            subTreeScore = left->subTreeScore + right->subTreeScore + (this->gladiator)->GetScore();
             return;
         }
         if(left == NULL){
@@ -72,8 +71,7 @@ public:
         }
         left->AddGladiator(gladiator);
         weight++;
-        subTreeScore = left->subTreeScore + right->subTreeScore + (this->gladiator).GetScore();
-        return;
+        subTreeScore = left->subTreeScore + right->subTreeScore + (this->gladiator)->GetScore();
     }
 
     int GetTopKScore(int k){
