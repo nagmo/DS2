@@ -7,6 +7,7 @@
 
 class MinHeap {
 public:
+    explicit MinHeap();
     /**
      * create a heap from array
      * @param n - length
