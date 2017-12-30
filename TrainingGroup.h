@@ -2,12 +2,16 @@
 #define DS2_TRAININGGROUP_H
 
 #include "utilities.h"
+#include "Node.h"
 
 class TrainingGroup {
 public:
 
+    explicit TrainingGroup(GroupId ID = -1);
 
     bool isVoid();
+
+    GroupId GetID();
 
     bool operator==(TrainingGroup&);
 
@@ -37,5 +41,20 @@ private:
     void* heap;
 };
 
+
+class HashTrainingGroup : public TrainingGroup{
+public:
+    explicit HashTrainingGroup(GroupId ID = -1);
+
+    ~HashTrainingGroup();
+
+    void addGladiator(Gladiator& gladiator);
+
+    int TopKGladsScore(int k);
+
+private:
+
+    Node*  root;
+};
 
 #endif //DS2_TRAININGGROUP_H

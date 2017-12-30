@@ -1,6 +1,7 @@
 
 #include "TrainingGroup.h"
 
+TrainingGroup::TrainingGroup(GroupId ID) : id(ID), isActive(true){}
 
 bool TrainingGroup::isVoid(){
     return id == -1;
@@ -40,5 +41,23 @@ void TrainingGroup::setHeapPointer(void* pointer){
 void* TrainingGroup::getHeapPointer(){
     return heap;
 =======
+
+GroupId TrainingGroup::GetID() {
+    return id;
+}
+
+HashTrainingGroup::HashTrainingGroup(GroupId ID):
+TrainingGroup(ID), root(NULL) {}
+
+HashTrainingGroup::~HashTrainingGroup() {
+    delete root;
+}
+
+void HashTrainingGroup::addGladiator(Gladiator& gladiator) {
+    root->AddGladiator(gladiator);
+}
+
+int HashTrainingGroup::TopKGladsScore(int k) {
+    return 0;
 >>>>>>> 43b6ee6943aba5c57c85b31a3352e90047f32336
 }
