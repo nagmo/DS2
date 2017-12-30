@@ -5,5 +5,8 @@
 #include <exception>
 
 typedef int GroupId;
+typedef int GladiatorID;
+typedef int Level;
+
 
 #endif //DS2_UTILITIES_H
