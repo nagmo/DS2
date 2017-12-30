@@ -3,7 +3,7 @@
 
 using MinHeapExceptions::FailureException;
 
-explicit MinHeap::MinHeap() : data(DynamicArray<TrainingGroup>(0)){}
+MinHeap::MinHeap() : data(DynamicArray<TrainingGroup>(0)){}
 
 MinHeap::MinHeap(int n, TrainingGroup** idsArray) : data(DynamicArray<TrainingGroup>(n, idsArray)){
     //arrange the array
