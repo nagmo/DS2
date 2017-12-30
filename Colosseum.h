@@ -24,5 +24,10 @@ private:
     HashTrainingGroup hashGroup;
 };
 
+namespace ColosseumException{
+    class InvaldInput{};
+    class Failure{};
+
+}
 
 #endif //DS2_COLOSSEUM_H

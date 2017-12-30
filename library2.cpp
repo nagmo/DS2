@@ -1,6 +1,11 @@
 #include "library2.h"
+#include "Colosseum.h"
 
-void* init(int n, int *trainingGroupsIDs);
+void* init(int n, int *trainingGroupsIDs){
+    try{
+        new Colosseum(n, trainingGroupsIDs);
+    }
+}
 
 StatusType addTrainingGroup(void *DS, int trainingGroupID);
 
