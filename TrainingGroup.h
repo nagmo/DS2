@@ -6,12 +6,6 @@
 class TrainingGroup {
 public:
 
-    /**
-     * empty constructor that sais this element is void
-     */
-    TrainingGroup();
-
-    TrainingGroup(int n);
 
     bool isVoid();
 

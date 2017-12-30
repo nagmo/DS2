@@ -1,9 +1,6 @@
 
 #include "TrainingGroup.h"
 
-TrainingGroup::TrainingGroup() : id(-1), isActive(true){}
-
-TrainingGroup::TrainingGroup(int n) : id(n), isActive(true){}
 
 bool TrainingGroup::isVoid(){
     return id == -1;
@@ -27,6 +24,7 @@ void TrainingGroup::disActivate(){
     isActive = false;
 }
 
+<<<<<<< HEAD
 void TrainingGroup::setIndex(int i){
     index = i;
 }
@@ -41,4 +39,6 @@ void TrainingGroup::setHeapPointer(void* pointer){
 
 void* TrainingGroup::getHeapPointer(){
     return heap;
+=======
+>>>>>>> 43b6ee6943aba5c57c85b31a3352e90047f32336
 }
