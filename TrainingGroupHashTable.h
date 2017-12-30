@@ -25,7 +25,7 @@ public:
      * add a group to the table.
      * @param trainingGroupID - group to add.
      */
-    void AddTrainingGroup(HashTrainingGroup& trainingGroupID);
+    int AddTrainingGroup(HashTrainingGroup& trainingGroupID);
 
     /**
      * add gladiator to a group by group ID.
@@ -82,6 +82,6 @@ private:
 namespace HashTableException {
     class GroupDoesntExist{};
     class NotEnoghGladiators{};
-    class GroupAlreadyExist();
+    class GroupAlreadyExist{};
 };
 #endif //DS2_TRAININGGROUPHASHTABLE_H

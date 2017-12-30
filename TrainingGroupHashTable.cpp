@@ -26,7 +26,7 @@ TrainingGroupHashTable::~TrainingGroupHashTable(){
 /**
  * add a group to the table.
  * @param trainingGroup - group to add.
- * @return index of the group after adding, 0 if rehash occurred.
+ * @return index of the group after adding, -1 if rehash occurred.
  */
 int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup& trainingGroup) {
     //calculate the hash number for the group and the jump factor
@@ -40,9 +40,9 @@ int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup& trainingGroup) {
         index = (index + jumpFactor) % sizeOfHashTable;
     }
     //insert to the array, if array expands then do re-hashing.
-    if(array->insert(trainingGroup,index) == ArrayExpand){
+    if(array->insert(trainingGroup,index) == ArrayExpand){ //TODO: change to catch an exception
         rehash();
-        return 0;
+        return -1;
     }
     return index;
 }
