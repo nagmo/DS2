@@ -1,9 +1,7 @@
 
 #include "TrainingGroup.h"
 
-TrainingGroup::TrainingGroup() : id(-1), isActive(true){}
-
-TrainingGroup::TrainingGroup(int n) : id(n), isActive(true){}
+TrainingGroup::TrainingGroup(GroupId ID) : id(ID), isActive(true){}
 
 bool TrainingGroup::isVoid(){
     return id == -1;
@@ -25,4 +23,24 @@ bool TrainingGroup::operator<(TrainingGroup& trainingGroup){
 
 void TrainingGroup::disActivate(){
     isActive = false;
+}
+
+
+GroupId TrainingGroup::GetID() {
+    return id;
+}
+
+HashTrainingGroup::HashTrainingGroup(GroupId ID):
+TrainingGroup(ID), root(NULL) {}
+
+HashTrainingGroup::~HashTrainingGroup() {
+    delete root;
+}
+
+void HashTrainingGroup::addGladiator(Gladiator& gladiator) {
+    root->AddGladiator(gladiator);
+}
+
+int HashTrainingGroup::TopKGladsScore(int k) {
+    return 0;
 }

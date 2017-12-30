@@ -9,11 +9,11 @@
  * @param trainingGroups - training group array of training groups
  */
 TrainingGroupHashTable::TrainingGroupHashTable(int numOfGroups,
-                                               TrainingGroup& *trainingGroups):
+                                               HashTrainingGroup& *trainingGroups):
 array(NULL),
 sizeOfHashTable(numOfGroups)
 {
-    array = new DynamicArray<TrainingGroup>(numOfGroups);
+    array = new DynamicArray<HashTrainingGroup>(numOfGroups);
     for(int i=0; i<numOfGroups; i++){
         AddTrainingGroup(trainingGroups[i]);
     }
@@ -26,14 +26,18 @@ TrainingGroupHashTable::~TrainingGroupHashTable(){
 /**
  * add a group to the table.
  * @param trainingGroup - group to add.
+ * @exception GroupAlreadyExist
  */
-void TrainingGroupHashTable::AddTrainingGroup(TrainingGroup& trainingGroup) {
+void TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup& trainingGroup) {
     //calculate the hash number for the group and the jump factor
-    int index = FirstHash(trainingGroup.GetID);
-    int jumpFactor =  SecondHash(trainingGroup.GetID);
+    int index = FirstHash(trainingGroup.GetID());
+    int jumpFactor =  SecondHash(trainingGroup.GetID());
 
     //loop until finds an empty slot.
     while(!(array->isEmpty(index))){
+        //if the group is in the table throw an exception.
+        if((*array)[index] = trainingGroup)
+            throw HashTableException::GroupAlreadyExist();
         index = (index + jumpFactor) % sizeOfHashTable;
     }
     //insert to the array, if array expands then do re-hashing.
@@ -46,10 +50,15 @@ void TrainingGroupHashTable::AddTrainingGroup(TrainingGroup& trainingGroup) {
  * add gladiator to a group by group ID.
  * @param gladiator - Gladiator class.
  * @param groupID - group to add to.
+ * @exception HashTableException::GladiatorAlreadyExist
  */
 void TrainingGroupHashTable::AddGladiatorToTrainingGroup(Gladiator& gladiator,
                                                     GroupId groupID) {
-    findGroup(groupID).addGladiator(gladiator);
+    try {
+        findGroup(groupID).addGladiator(gladiator);
+    }catch (TreeExceptions::GladiatorExists&){
+        throw HashTableException::GladiatorAlreadyExist();
+    }
 }
 
 /**
@@ -64,8 +73,8 @@ void TrainingGroupHashTable::AddGladiatorToTrainingGroup(Gladiator& gladiator,
 TrainingGroup& TrainingGroupHashTable::TrainingGroupFight(GroupId group1ID,
                                           GroupId group2ID, int k1, int k2) {
     //find groups
-    TrainingGroup& group1 = findGroup(group1ID);
-    TrainingGroup& group2 = findGroup(group2ID);
+    HashTrainingGroup& group1 = findGroup(group1ID);
+    HashTrainingGroup& group2 = findGroup(group2ID);
 
     //get top ki score.
     int group1Score = group1.TopKGladsScore(k1);
@@ -107,7 +116,7 @@ int TrainingGroupHashTable::SecondHash(GroupId groupID) {
  * @return - reference to the group in the array.
  * @exception - HashTableException::GroupDoesntExist
  */
-TrainingGroup& TrainingGroupHashTable::findGroup(GroupId ID){
+HashTrainingGroup& TrainingGroupHashTable::findGroup(GroupId ID){
     //get hashed number for group and jump factor
     int index = FirstHash(ID);
     int jumpFactor =  SecondHash(ID);
@@ -132,7 +141,7 @@ void TrainingGroupHashTable::rehash() {
     //save the old array.
     DynamicArray* temp = array;
     //create a new empty array
-    array = new DynamicArray<TrainingGroup>(sizeOfHashTable);
+    array = new DynamicArray<HashTrainingGroup>(sizeOfHashTable);
     //loop through all of the items in the table and insert with the new index.
     for(int i=0; i<sizeOfHashTable; i++){
         if(!(temp->isEmpty(i))) AddTrainingGroup((*temp)[i]);
