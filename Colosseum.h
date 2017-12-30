@@ -17,7 +17,7 @@ public:
 
     void fight(GroupId, GroupId, int, int);
 
-    void getMinTrainingGroup(int*);
+    int getMinTrainingGroup();
 
 private:
     MinHeap heapGroup;
