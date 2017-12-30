@@ -4,8 +4,8 @@
 
 #include "DynamicArray.h"
 #include "utilities.h"
+#include "TrainingGroup.h"
 
-class TrainingGroup{};
 class Gladiator{};
 
 class TrainingGroupHashTable {
@@ -17,7 +17,7 @@ public:
      * @param numOfGroups - number of groups to start with
      * @param trainingGroupsID - int array of training groups ID numbers
      */
-    TrainingGroupHashTable(int numOfGroups, TrainingGroup& *trainingGroupsID);
+    TrainingGroupHashTable(int numOfGroups, HashTrainingGroup& *trainingGroupsID);
 
     ~TrainingGroupHashTable();
 
@@ -25,7 +25,7 @@ public:
      * add a group to the table.
      * @param trainingGroupID - group to add.
      */
-    void AddTrainingGroup(TrainingGroup& trainingGroupID);
+    void AddTrainingGroup(HashTrainingGroup& trainingGroupID);
 
     /**
      * add gladiator to a group by group ID.
@@ -43,7 +43,7 @@ public:
      * @param numOfGladiators2
      * @return - pointer to the group that lost.
      */
-    TrainingGroup& TrainingGroupFight(GroupId group1ID, GroupId group2ID,
+    HashTrainingGroup& TrainingGroupFight(GroupId group1ID, GroupId group2ID,
                       int numOfGladiators1, int numOfGladiators2);
 
 private:
@@ -74,12 +74,14 @@ private:
     * @return - reference to the group in the array.
     * @exception - HashTableException::GroupDoesntExist
     */
-    TrainingGroup& findGroup(GroupId Id);
+    HashTrainingGroup& findGroup(GroupId Id);
 
     void rehash();
 };
 
 namespace HashTableException {
     class GroupDoesntExist{};
+    class NotEnoghGladiators{};
+    class GroupAlreadyExist();
 };
 #endif //DS2_TRAININGGROUPHASHTABLE_H

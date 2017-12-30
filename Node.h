@@ -10,11 +10,17 @@ namespace TreeExceptions{
     class GladiatorExists{};
 }
 
+/**
+ * rank tree for gladiators.
+ * keeps the gladiators and the weight of every sub tree +
+ * the total score of the sub tree
+ */
 class Node{
 public:
 
     explicit Node(Gladiator& gladiator, Node* left=NULL, Node* right=NULL):
-            gladiator(new Gladiator(gladiator)), left(left), right(right){}
+            gladiator(new Gladiator(gladiator)), left(left), right(right),
+            weight(1), subTreeScore(gladiator.GetScore()){}
 
     ~Node(){
         delete gladiator;
@@ -41,24 +47,52 @@ public:
     }
 
     void AddGladiator(Gladiator& gladiator){
+        //if gladiator exist throw exception
         if(gladiator == this->gladiator)
             throw TreeExceptions::GladiatorExists();
+        //find the place for the gladiator.
         if(gladiator > this->gladiator){
             if(right == NULL){
                 right = new Node(gladiator);
+                //if added a gladiator update weight and score.
+                weight++;
+                subTreeScore += gladiator.GetScore();
                 return;
             }
-            return right->AddGladiator(gladiator);
+            right->AddGladiator(gladiator);
+            weight++;
+            subTreeScore = left->subTreeScore + right->subTreeScore + (this->gladiator).GetScore();
+            return;
         }
         if(left == NULL){
             left = new Node(gladiator);
+            weight++;
+            subTreeScore += gladiator.GetScore();
             return;
         }
-        return left->AddGladiator(gladiator);
+        left->AddGladiator(gladiator);
+        weight++;
+        subTreeScore = left->subTreeScore + right->subTreeScore + (this->gladiator).GetScore();
+        return;
+    }
+
+    int GetTopKScore(int k){
+        if(left != NULL){
+            if(left->weight == k-1) return subTreeScore;
+            else if(left->weight > k-1) return left->GetTopKScore(k);
+            else {
+                if (right != NULL)
+                    return right->GetTopKScore(k - (left->weight) - 1);
+            }
+        }
+        //in case of failure
+        return  0;
     }
 
 private:
     Gladiator* gladiator;
+    int weight;
+    int subTreeScore;
     Node* left;
     Node* right;
 };

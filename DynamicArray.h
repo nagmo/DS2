@@ -21,7 +21,7 @@ public:
      * creates array size n
      * @param n
      */
-    DynamicArray(int n);
+    explicit DynamicArray(int n);
 
     /**
      * fill the array with the given values
@@ -84,7 +84,7 @@ private:
     /**
      * make the array twice bigger
      */
-    void extractArray();
+    void expandArray();
 };
 
 using std::is_pointer;
@@ -123,7 +123,7 @@ T& DynamicArray<T>::insert(T& newData, int index){
     data[index] = new T(newData);
     //check if need expand
     if(numberOfElements >= maxSize/2){
-        extractArray();
+        expandArray();
         //TODO: throw somthing
     }
     return *(data[index]);
@@ -173,7 +173,7 @@ int DynamicArray<T>::getMinOfThreeIndexes(int i, int j, int k){
  * make the array twice bigger
  */
 template <class T>
-void DynamicArray<T>::extractArray(){
+void DynamicArray<T>::expandArray(){
     T** newArray = new T*[2*maxSize];
     for (int i = 0; i < maxSize; ++i) {
         newArray[i] = data[i];
