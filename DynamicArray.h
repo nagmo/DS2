@@ -2,7 +2,7 @@
 #define DS2_DYNAMICARRAY_H
 
 //#include <type_traits>
-
+#include <clocale>
 
 /**
  * Generic class of Dynamic Array
@@ -89,14 +89,14 @@ namespace DynamicArrayException{
 
 template <class T>
 DynamicArray<T>::DynamicArray(int n) : maxSize(n), numberOfElements(0){
-    data = new T*[n];
+    data = new T*[n](); //TODO: Yuval - this calls the default constructor for each element in the array. in this case because it's a pointer it puts NULL.
 }
 
 template <class T>
 DynamicArray<T>::DynamicArray(int n, T** arr) : maxSize(n*2), numberOfElements(n){
-    data = new T*[n*2];
+    data = new T*[n*2]();
     for (int i = 0; i < n; ++i) {
-        data[i] = arr[i];
+        data[i] = new T(*(arr[i]));
     }
     for (int i = n; i < maxSize ; i++) {
         data[i] = new T();
@@ -142,7 +142,8 @@ T& DynamicArray<T>::operator[](int index){
 
 template <class T>
 bool DynamicArray<T>::isEmpty(int index){
-    return data[index]->isVoid();
+    if(data!=NULL && data[index]!=NULL) return data[index]->isVoid();
+    return true;
 }
 
 

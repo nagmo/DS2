@@ -21,6 +21,13 @@ public:
             gladiator(new Gladiator(gladiator)), left(left), right(right),
             weight(1), subTreeScore(gladiator.GetScore()){}
 
+    Node(Node* node): gladiator(new Gladiator(*(node->gladiator))),
+          weight(node->weight), subTreeScore(node->subTreeScore),
+                      left(NULL), right(NULL){
+        if(node->left) left = new Node(node->left);
+        if(node->right) right = new Node(node->right);
+    }
+
     ~Node(){
         delete gladiator;
     }

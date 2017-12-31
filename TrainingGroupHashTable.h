@@ -18,7 +18,7 @@ public:
      * @param numOfGroups - number of groups to start with
      * @param trainingGroupsID - int array of training groups ID numbers
      */
-    TrainingGroupHashTable(int numOfGroups, HashTrainingGroup* &trainingGroupsID);
+    TrainingGroupHashTable(int numOfGroups, HashTrainingGroup** trainingGroupsID);
 
     ~TrainingGroupHashTable();
 
@@ -26,7 +26,7 @@ public:
      * add a group to the table.
      * @param trainingGroupID - group to add.
      */
-    int AddTrainingGroup(HashTrainingGroup& trainingGroupID);
+    int AddTrainingGroup(HashTrainingGroup* trainingGroupID);
 
     /**
      * add gladiator to a group by group ID.
@@ -46,6 +46,8 @@ public:
      */
     HashTrainingGroup& TrainingGroupFight(GroupId group1ID, GroupId group2ID,
                       int numOfGladiators1, int numOfGladiators2);
+
+    HashTrainingGroup& GetGroupByIndex(int index);
 
 private:
 

@@ -1,7 +1,11 @@
 
 #include "TrainingGroup.h"
 
-TrainingGroup::TrainingGroup(GroupId ID) : id(ID), isActive(true){}
+TrainingGroup::TrainingGroup(GroupId ID) : id(ID), isActive(true),
+                                           index(-1), heap(NULL){}
+
+TrainingGroup::TrainingGroup(TrainingGroup &group) : id(group.id),
+         isActive(group.isActive), index(group.index), heap(group.heap) {}
 
 bool TrainingGroup::isVoid(){
     return id == -1;
@@ -48,6 +52,11 @@ GroupId TrainingGroup::GetID() {
 HashTrainingGroup::HashTrainingGroup(GroupId ID):
 TrainingGroup(ID), root(NULL) {}
 
+HashTrainingGroup::HashTrainingGroup(HashTrainingGroup &group):
+        TrainingGroup(group), root(NULL) {
+    if(group.root) root = new Node(group.root);
+}
+
 HashTrainingGroup::~HashTrainingGroup() {
     delete root;
 }
@@ -59,3 +68,5 @@ void HashTrainingGroup::addGladiator(Gladiator& gladiator) {
 int HashTrainingGroup::TopKGladsScore(int k) {
     return (root->GetTopKScore(k));
 }
+
+

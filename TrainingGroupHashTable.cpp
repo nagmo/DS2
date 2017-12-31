@@ -11,7 +11,7 @@ TrainingGroupHashTable::TrainingGroupHashTable() : array(NULL), sizeOfHashTable(
  * @param trainingGroups - training group array of training groups
  */
 TrainingGroupHashTable::TrainingGroupHashTable(int numOfGroups,
-                                               HashTrainingGroup* &trainingGroups):
+                                               HashTrainingGroup** trainingGroups):
 array(NULL),
 sizeOfHashTable(numOfGroups)
 {
@@ -30,20 +30,20 @@ TrainingGroupHashTable::~TrainingGroupHashTable(){
  * @param trainingGroup - group to add.
  * @return index of the group after adding, -1 if rehash occurred.
  */
-int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup& trainingGroup) {
+int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup* trainingGroup) {
     //calculate the hash number for the group and the jump factor
-    int index = FirstHash(trainingGroup.GetID());
-    int jumpFactor =  SecondHash(trainingGroup.GetID());
+    int index = FirstHash(trainingGroup->GetID());
+    int jumpFactor =  SecondHash(trainingGroup->GetID());
 
     //loop until finds an empty slot.
     while(!(array->isEmpty(index))){
-        if((*array)[index] == trainingGroup)
+        if((*array)[index] == *trainingGroup)
             throw HashTableException::GroupAlreadyExist();
         index = (index + jumpFactor) % sizeOfHashTable;
     }
     //insert to the array, if array expands then do re-hashing.
     try{
-        array->insert(trainingGroup,index);
+        array->insert(*trainingGroup,index);
     }catch(DynamicArrayException::ArrayExpand&){
         rehash();
         return -1;
@@ -125,7 +125,7 @@ HashTrainingGroup& TrainingGroupHashTable::findGroup(GroupId ID){
     int index = FirstHash(ID);
     int jumpFactor =  SecondHash(ID);
     //loop until finds the group or gets to an empty slot.
-    while(((*array)[index]).GetID() != ID && !(array->isEmpty(index))){
+    while(!(array->isEmpty(index)) && ((*array)[index]).GetID() != ID ){
         index = (index + jumpFactor) % sizeOfHashTable;
     }
     //if the slot is empty then the group doesn't exist.
@@ -148,7 +148,11 @@ void TrainingGroupHashTable::rehash() {
     array = new DynamicArray<HashTrainingGroup>(sizeOfHashTable);
     //loop through all of the items in the table and insert with the new index.
     for(int i=0; i<sizeOfHashTable; i++){
-        if(!(temp->isEmpty(i))) AddTrainingGroup((*temp)[i]);
+        if(!(temp->isEmpty(i))) AddTrainingGroup(&(*temp)[i]);
     }
     delete temp;
+}
+
+HashTrainingGroup &TrainingGroupHashTable::GetGroupByIndex(int index) {
+    return (*array)[index];
 }

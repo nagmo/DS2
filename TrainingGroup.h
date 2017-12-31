@@ -9,6 +9,8 @@ public:
 
     explicit TrainingGroup(GroupId ID = -1);
 
+    explicit TrainingGroup(TrainingGroup& group);
+
     bool isVoid();
 
     GroupId GetID();
@@ -45,6 +47,8 @@ private:
 class HashTrainingGroup : public TrainingGroup{
 public:
     explicit HashTrainingGroup(GroupId ID = -1);
+
+    HashTrainingGroup(HashTrainingGroup& group);
 
     ~HashTrainingGroup();
 

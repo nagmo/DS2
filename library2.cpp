@@ -9,8 +9,9 @@ void* init(int n, int *trainingGroupsIDs){
         colosseum = new Colosseum(n, trainingGroupsIDs);
     }catch(std::bad_alloc&){
         return NULL;
+    }catch(ColosseumException::InvaldInput&){
+        return NULL;
     }
-    //TODO add catch?
     return (void*) colosseum;
 }
 

@@ -14,38 +14,45 @@ Colosseum::Colosseum(int n, int* ids){
     validateIds(n, ids);
     //now ids are valid
     //TODO: should we check that new succeed and if not delete groups?
-    TrainingGroup** groupIds = new TrainingGroup*[n];
+    TrainingGroup** groupIds = new TrainingGroup*[n]();
     for (int i = 0; i < n; ++i) {
         groupIds[i] = new TrainingGroup(ids[i]);
     }
     //dont check with try because we assume that id are valid
     heapGroup = MinHeap(n, groupIds);
-    HashTrainingGroup* hashTrainingGroup = new HashTrainingGroup[n];
-    for (int k = 0; k < n; ++k) {
-        //TODO: check if it is ok
-        hashTrainingGroup[k] = HashTrainingGroup(ids[k]);
-    }
-    hashGroup = TrainingGroupHashTable(n, hashTrainingGroup);
-    //deleteing the groups
-    delete [] hashTrainingGroup;
-    for (int j = 0; j < n; ++j) {
-        delete groupIds[j];
+    //delete heap groups
+    for(int i=0; i<n; i++){
+        delete groupIds[i];
     }
     delete [] groupIds;
+
+    HashTrainingGroup** hashTrainingGroup = new HashTrainingGroup*[n];
+    for (int k = 0; k < n; ++k) {
+        //TODO: check if it is ok
+        hashTrainingGroup[k] = new HashTrainingGroup(ids[k]);
+    }
+    hashGroup = TrainingGroupHashTable(n, hashTrainingGroup);
+    //deleteing hash groups
+    for(int i=0; i<n; i++){
+        delete hashTrainingGroup[i];
+    }
+    delete [] hashTrainingGroup;
 }
 
 void Colosseum::addGroup(GroupId id){
     //check that id is valid
     if(id < 0) throw InvaldInput();
-    HashTrainingGroup group = HashTrainingGroup(id);
+    HashTrainingGroup* group = new HashTrainingGroup(id);
     int index = -1;
     try{
         index = hashGroup.AddTrainingGroup(group);
     }
     catch (HashTableException::GroupAlreadyExist){
+        delete group;
         throw InvaldInput();
     }
-    TrainingGroup trainingGroup = TrainingGroup(id);
+    delete group;
+    TrainingGroup trainingGroup(id);
     //get the pointer to the group
     TrainingGroup& newGroup = heapGroup.addGroup(trainingGroup);
     if(index != -1){
