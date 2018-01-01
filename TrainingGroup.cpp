@@ -62,7 +62,12 @@ HashTrainingGroup::~HashTrainingGroup() {
 }
 
 void HashTrainingGroup::addGladiator(Gladiator& gladiator) {
-    root->AddGladiator(gladiator);
+    if(root != NULL){
+        root->AddGladiator(gladiator);
+    }
+    else{
+        root = new Node(gladiator);
+    }
 }
 
 int HashTrainingGroup::TopKGladsScore(int k) {
