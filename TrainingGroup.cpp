@@ -49,11 +49,11 @@ GroupId TrainingGroup::GetID() {
     return id;
 }
 
-HashTrainingGroup::HashTrainingGroup(GroupId ID):
-TrainingGroup(ID), root(NULL) {}
+HashTrainingGroup::HashTrainingGroup(GroupId ID, TrainingGroup* trainingGroup):
+TrainingGroup(ID), root(NULL), groupFromHeap(trainingGroup) {}
 
-HashTrainingGroup::HashTrainingGroup(HashTrainingGroup &group):
-        TrainingGroup(group), root(NULL) {
+HashTrainingGroup::HashTrainingGroup(HashTrainingGroup &group, TrainingGroup* trainingGroup):
+        TrainingGroup(group), root(NULL), groupFromHeap(trainingGroup){
     if(group.root) root = new Node(group.root);
 }
 
@@ -67,6 +67,14 @@ void HashTrainingGroup::addGladiator(Gladiator& gladiator) {
 
 int HashTrainingGroup::TopKGladsScore(int k) {
     return (root->GetTopKScore(k));
+}
+
+void HashTrainingGroup::setGroupFromHeapPointer(TrainingGroup* trainingGroup){
+    groupFromHeap = trainingGroup;
+}
+
+TrainingGroup* HashTrainingGroup::getGroupFromHeapPointer(){
+    return groupFromHeap;
 }
 
 

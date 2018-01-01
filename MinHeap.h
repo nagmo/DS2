@@ -20,7 +20,7 @@ public:
      * need to check if is exists before using this function
      * @param trainingGroup
      */
-    TrainingGroup& addGroup(TrainingGroup& trainingGroup);
+    TrainingGroup* addGroup(TrainingGroup& trainingGroup);
 
     /**
      * returns the minimal group that is active
@@ -29,6 +29,13 @@ public:
     TrainingGroup& getMinGroup();
 
     void disActiveGroup(int);
+
+    /**
+     * very dangerous!! dont use it!
+     * use only it the constructor of hashtable
+     * @return
+     */
+    DynamicArray<TrainingGroup>* getDataArray();
 
 
 private:

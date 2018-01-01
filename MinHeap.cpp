@@ -18,10 +18,17 @@ MinHeap::MinHeap(int n, TrainingGroup** idsArray) : data(DynamicArray<TrainingGr
     }
 }
 
-TrainingGroup& MinHeap::addGroup(TrainingGroup& trainingGroup){
+TrainingGroup* MinHeap::addGroup(TrainingGroup& trainingGroup){
     int numOfElements =  data.numOfElements();
-    TrainingGroup& newGroup = data.insert(trainingGroup, numOfElements);
-    newGroup.setHeapPointer(this);
+    TrainingGroup* newGroup = NULL;
+    try{
+        newGroup = data.insert(trainingGroup, numOfElements);
+    }
+        //dont care of expand
+    catch (DynamicArrayException::ArrayExpand& ae){
+        newGroup = (TrainingGroup*)ae.getObject();
+    }
+    newGroup->setHeapPointer(this);
     //now numOfelements is one bigger
     siftUp(numOfElements);
     return newGroup;
@@ -37,6 +44,10 @@ void MinHeap::disActiveGroup(int i){
     data[i].disActivate();
     //sift group down
     siftDown(i);
+}
+
+DynamicArray<TrainingGroup>* MinHeap::getDataArray(){
+    return &data;
 }
 
 void MinHeap::siftDown(int i){

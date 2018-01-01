@@ -40,6 +40,8 @@ int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup* trainingGroup) {
         if((*array)[index] == *trainingGroup)
             throw HashTableException::GroupAlreadyExist();
         index = (index + jumpFactor) % sizeOfHashTable;
+        //TODO NEVO - I added break here too..
+        if(index == FirstHash(trainingGroup->GetID())) break;
     }
     //insert to the array, if array expands then do re-hashing.
     try{
@@ -127,6 +129,8 @@ HashTrainingGroup& TrainingGroupHashTable::findGroup(GroupId ID){
     //loop until finds the group or gets to an empty slot.
     while(!(array->isEmpty(index)) && ((*array)[index]).GetID() != ID ){
         index = (index + jumpFactor) % sizeOfHashTable;
+        //TODO - NEVO I added it because it was infinity loop , is it possible to get an index twice before going over all slots?
+        if(index == FirstHash(ID)) throw HashTableException::GroupDoesntExist();
     }
     //if the slot is empty then the group doesn't exist.
     if(array->isEmpty(index)) throw HashTableException::GroupDoesntExist();
@@ -154,5 +158,6 @@ void TrainingGroupHashTable::rehash() {
 }
 
 HashTrainingGroup &TrainingGroupHashTable::GetGroupByIndex(int index) {
-    return (*array)[index];
+    if(array)
+        return (*array)[index];
 }

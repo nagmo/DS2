@@ -11,6 +11,8 @@ class Colosseum {
 public:
     Colosseum(int, int*);
 
+    ~Colosseum();
+
     void addGroup(int);
 
     void addGlad(GladiatorID, Level, GroupId);
@@ -20,8 +22,8 @@ public:
     int getMinTrainingGroup();
 
 private:
-    MinHeap heapGroup;
-    TrainingGroupHashTable hashGroup;
+    MinHeap* heapGroup;
+    TrainingGroupHashTable* hashGroup;
 };
 
 namespace ColosseumException{

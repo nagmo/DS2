@@ -1,8 +1,8 @@
 #ifndef DS2_DYNAMICARRAY_H
 #define DS2_DYNAMICARRAY_H
 
-//#include <type_traits>
-#include <clocale>
+//#include <clocale>
+#include "utilities.h"
 
 /**
  * Generic class of Dynamic Array
@@ -41,7 +41,7 @@ public:
      * @param index
      * @return expand - if there was array expansion
      */
-    T& insert(T& data, int index);
+    T* insert(T& data, int index);
 
     /**
      * swap values in the i j indexes
@@ -84,7 +84,18 @@ private:
 };
 
 namespace DynamicArrayException{
-    class ArrayExpand{};
+    class ArrayExpand : std::exception{
+    public:
+        ArrayExpand(void* object) : exception(){
+            returnValue = object;
+        }
+        void* getObject(){
+            return returnValue;
+        }
+
+    private:
+        void* returnValue;
+    };
 }
 
 template <class T>
@@ -114,7 +125,7 @@ DynamicArray<T>::~DynamicArray(){
 
 
 template <class T>
-T& DynamicArray<T>::insert(T& newData, int index){
+T* DynamicArray<T>::insert(T& newData, int index){
     //case of new data - add 1 to items
     if(data[index] && (data[index])->isVoid()) numberOfElements++;
     //delete data[index];
@@ -122,9 +133,10 @@ T& DynamicArray<T>::insert(T& newData, int index){
     //check if need expand
     if(numberOfElements >= maxSize/2){
         expandArray();
-        throw DynamicArrayException::ArrayExpand();
+        //TODO if throws exception, return no data
+        throw DynamicArrayException::ArrayExpand(data[index]);
     }
-    return *(data[index]);
+    return (data[index]);
 }
 
 template <class T>

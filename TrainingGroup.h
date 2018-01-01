@@ -46,9 +46,9 @@ private:
 
 class HashTrainingGroup : public TrainingGroup{
 public:
-    explicit HashTrainingGroup(GroupId ID = -1);
+    explicit HashTrainingGroup(GroupId ID = -1, TrainingGroup* = NULL);
 
-    HashTrainingGroup(HashTrainingGroup& group);
+    HashTrainingGroup(HashTrainingGroup& group, TrainingGroup* = NULL);
 
     ~HashTrainingGroup();
 
@@ -56,8 +56,13 @@ public:
 
     int TopKGladsScore(int k);
 
-private:
+    void setGroupFromHeapPointer(TrainingGroup*);
 
+    TrainingGroup* getGroupFromHeapPointer();
+
+private:
+    //pointer to the real group from heap
+    TrainingGroup* groupFromHeap;
     Node*  root;
 };
 
