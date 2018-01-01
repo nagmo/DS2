@@ -55,7 +55,7 @@ void Colosseum::addGroup(GroupId id){
     }
     catch (HashTableException::GroupAlreadyExist){
         delete group;
-        throw InvaldInput();
+        throw Failure();
     }
     delete group;
     TrainingGroup trainingGroup(id);

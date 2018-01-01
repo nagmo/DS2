@@ -62,6 +62,7 @@ HashTrainingGroup::~HashTrainingGroup() {
 }
 
 void HashTrainingGroup::addGladiator(Gladiator& gladiator) {
+    //TODO need to check if glad exists
     if(root != NULL){
         root->AddGladiator(gladiator);
     }
