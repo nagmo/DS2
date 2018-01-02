@@ -40,7 +40,7 @@ int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup* trainingGroup) {
         if((*array)[index] == *trainingGroup)
             throw HashTableException::GroupAlreadyExist();
         index = (index + jumpFactor) % sizeOfHashTable;
-        //TODO NEVO - I added break here too..
+        //TODO: Yuval - the reasone there is a problem is that in the array there are three elements but it shows like there is zero. so the array doesnt grow.
         if(index == FirstHash(trainingGroup->GetID())) break;
     }
     //insert to the array, if array expands then do re-hashing.
@@ -60,7 +60,11 @@ int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup* trainingGroup) {
  */
 void TrainingGroupHashTable::AddGladiatorToTrainingGroup(Gladiator& gladiator,
                                                     GroupId groupID) {
-    findGroup(groupID).addGladiator(gladiator);
+    try {
+        findGroup(groupID).addGladiator(gladiator);
+    }catch(TreeExceptions::GladiatorExists&){
+        throw HashTableException::GladiatorExist();
+    }
 }
 
 /**
@@ -129,7 +133,6 @@ HashTrainingGroup& TrainingGroupHashTable::findGroup(GroupId ID){
     //loop until finds the group or gets to an empty slot.
     while(!(array->isEmpty(index)) && ((*array)[index]).GetID() != ID ){
         index = (index + jumpFactor) % sizeOfHashTable;
-        //TODO - NEVO I added it because it was infinity loop , is it possible to get an index twice before going over all slots?
         if(index == FirstHash(ID)) throw HashTableException::GroupDoesntExist();
     }
     //if the slot is empty then the group doesn't exist.

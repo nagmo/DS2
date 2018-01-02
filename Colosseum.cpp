@@ -16,7 +16,7 @@ Colosseum::Colosseum(int n, int* ids) : heapGroup(NULL), hashGroup(NULL){
     //TODO: should we check that new succeed and if not delete groups?
     TrainingGroup** groupIds = new TrainingGroup*[n]();
     for (int i = 0; i < n; ++i) {
-        groupIds[i] = new TrainingGroup(ids[i]);
+        groupIds[i] = new TrainingGroup(ids[i]);//TODO: I think we need to check here and delete the array if new fails
     }
     //dont check with try because we assume that id are valid
     heapGroup = new MinHeap(n, groupIds);
@@ -29,7 +29,6 @@ Colosseum::Colosseum(int n, int* ids) : heapGroup(NULL), hashGroup(NULL){
     HashTrainingGroup** hashTrainingGroups = new HashTrainingGroup*[n];
     DynamicArray<TrainingGroup>* groupFromHeapArray = heapGroup->getDataArray();
     for (int k = 0; k < n; ++k) {
-        //TODO: check if it is ok
         hashTrainingGroups[k] = new HashTrainingGroup(ids[k], &(*groupFromHeapArray)[k]);
     }
     hashGroup = new TrainingGroupHashTable(n, hashTrainingGroups);
@@ -77,7 +76,10 @@ void Colosseum::addGlad(GladiatorID gladiatorID, Level level, GroupId groupId){
     catch (HashTableException::GroupDoesntExist&){
         throw Failure();
     }
-    catch (HashTableException::GroupAlreadyExist&){
+    catch (HashTableException::GroupAlreadyExist&){//TODO: why?
+        throw Failure();
+    }
+    catch(HashTableException::GladiatorExist&){
         throw Failure();
     }
 }

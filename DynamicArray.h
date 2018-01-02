@@ -133,7 +133,7 @@ T* DynamicArray<T>::insert(T& newData, int index){
     //check if need expand
     if(numberOfElements >= maxSize/2){
         expandArray();
-        //TODO if throws exception, return no data
+        //TODO if throws exception, return no data - Nevo: didn't get you
         throw DynamicArrayException::ArrayExpand(data[index]);
     }
     return (data[index]);
