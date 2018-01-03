@@ -15,10 +15,7 @@ TrainingGroupHashTable::TrainingGroupHashTable(int numOfGroups,
 array(NULL),
 sizeOfHashTable(numOfGroups)
 {
-    array = new DynamicArray<HashTrainingGroup>(numOfGroups);
-    for(int i=0; i<numOfGroups; i++){
-        AddTrainingGroup(trainingGroups[i]);
-    }
+    array = new DynamicArray<HashTrainingGroup>(numOfGroups, trainingGroups);
 }
 
 TrainingGroupHashTable::~TrainingGroupHashTable(){
@@ -40,7 +37,6 @@ int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup* trainingGroup) {
         if((*array)[index] == *trainingGroup)
             throw HashTableException::GroupAlreadyExist();
         index = (index + jumpFactor) % sizeOfHashTable;
-        //TODO: Yuval - the reasone there is a problem is that in the array there are three elements but it shows like there is zero. so the array doesnt grow.
         if(index == FirstHash(trainingGroup->GetID())) break;
     }
     //insert to the array, if array expands then do re-hashing.
@@ -48,7 +44,7 @@ int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup* trainingGroup) {
         array->insert(*trainingGroup,index);
     }catch(DynamicArrayException::ArrayExpand&){
         rehash();
-        return -1;
+        return getGroupIndex(trainingGroup->GetID());
     }
     return index;
 }
@@ -163,4 +159,20 @@ void TrainingGroupHashTable::rehash() {
 HashTrainingGroup &TrainingGroupHashTable::GetGroupByIndex(int index) {
     if(array)
         return (*array)[index];
+}
+
+int TrainingGroupHashTable::getGroupIndex(GroupId id) {
+    //get hashed number for group and jump factor
+    int index = FirstHash(id);
+    int jumpFactor = SecondHash(id);
+    //loop until finds the group or gets to an empty slot.
+    while (!(array->isEmpty(index)) && ((*array)[index]).GetID() != id) {
+        index = (index + jumpFactor) % sizeOfHashTable;
+        if (index == FirstHash(id)) throw HashTableException::GroupDoesntExist();
+    }
+    //if the slot is empty then the group doesn't exist.
+    if (array->isEmpty(index)) throw HashTableException::GroupDoesntExist();
+
+    //found the group, return it.
+    return index;
 }

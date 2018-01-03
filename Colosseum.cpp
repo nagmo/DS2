@@ -1,4 +1,5 @@
 
+#include <new>
 #include "Colosseum.h"
 using ColosseumException::Failure;
 using ColosseumException::InvaldInput;
@@ -13,10 +14,17 @@ void validateIds(int n, int* ids){
 Colosseum::Colosseum(int n, int* ids) : heapGroup(NULL), hashGroup(NULL){
     validateIds(n, ids);
     //now ids are valid
-    //TODO: should we check that new succeed and if not delete groups?
     TrainingGroup** groupIds = new TrainingGroup*[n]();
     for (int i = 0; i < n; ++i) {
-        groupIds[i] = new TrainingGroup(ids[i]);//TODO: I think we need to check here and delete the array if new fails
+        try{
+            groupIds[i] = new TrainingGroup(ids[i]);
+        }
+        catch (std::bad_alloc&){
+            for(; i > 0; i--){
+                delete groupIds[i-1];
+            }
+            delete [] groupIds;
+        }
     }
     //dont check with try because we assume that id are valid
     heapGroup = new MinHeap(n, groupIds);
@@ -60,11 +68,7 @@ void Colosseum::addGroup(GroupId id){
     TrainingGroup trainingGroup(id);
     //get the pointer to the group
     TrainingGroup* newGroup = heapGroup->addGroup(trainingGroup);
-    if(index != -1){
-        hashGroup->GetGroupByIndex(index).setGroupFromHeapPointer(newGroup);
-        //TODO: change the index of the saved group in the hash
-    }
-    //TODO what if -1?
+    hashGroup->GetGroupByIndex(index).setGroupFromHeapPointer(newGroup);
 }
 
 void Colosseum::addGlad(GladiatorID gladiatorID, Level level, GroupId groupId){
@@ -74,9 +78,6 @@ void Colosseum::addGlad(GladiatorID gladiatorID, Level level, GroupId groupId){
         hashGroup->AddGladiatorToTrainingGroup(gladiator, groupId);
     }
     catch (HashTableException::GroupDoesntExist&){
-        throw Failure();
-    }
-    catch (HashTableException::GroupAlreadyExist&){//TODO: why?
         throw Failure();
     }
     catch(HashTableException::GladiatorExist&){

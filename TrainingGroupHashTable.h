@@ -49,6 +49,9 @@ public:
 
     HashTrainingGroup& GetGroupByIndex(int index);
 
+    int getGroupIndex(GroupId id);
+
+
 private:
 
     DynamicArray<HashTrainingGroup>* array;
