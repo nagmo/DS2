@@ -37,6 +37,7 @@ Colosseum::Colosseum(int n, int* ids) : heapGroup(NULL), hashGroup(NULL){
     HashTrainingGroup** hashTrainingGroups = new HashTrainingGroup*[n];
     DynamicArray<TrainingGroup>* groupFromHeapArray = heapGroup->getDataArray();
     for (int k = 0; k < n; ++k) {
+        //TODO handle memory
         hashTrainingGroups[k] = new HashTrainingGroup(ids[k], &(*groupFromHeapArray)[k]);
     }
     hashGroup = new TrainingGroupHashTable(n, hashTrainingGroups);
