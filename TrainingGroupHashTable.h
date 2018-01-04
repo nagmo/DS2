@@ -90,5 +90,6 @@ namespace HashTableException {
     class NotEnoghGladiators{};
     class GroupAlreadyExist{};
     class GladiatorExist{};
+    class GroupCantFight{};
 };
 #endif //DS2_TRAININGGROUPHASHTABLE_H

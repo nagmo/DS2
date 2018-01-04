@@ -45,6 +45,10 @@ void* TrainingGroup::getHeapPointer() {
     return heap;
 }
 
+bool TrainingGroup::isGroupActive(){
+    return isActive;
+}
+
 GroupId TrainingGroup::GetID() {
     return id;
 }

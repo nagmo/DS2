@@ -115,6 +115,9 @@ void Colosseum::fight(GroupId id1, GroupId id2, int i, int j){
     catch (HashTableException::NotEnoghGladiators){
         throw Failure();
     }
+    catch (HashTableException::GroupCantFight&){
+        throw Failure();
+    }
     //deactivate the loosing teem
     heapGroup->deActiveGroup((trainingGroup->getGroupFromHeapPointer())->getIndex());
 }

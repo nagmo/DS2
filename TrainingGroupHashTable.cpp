@@ -81,6 +81,11 @@ HashTrainingGroup* TrainingGroupHashTable::TrainingGroupFight(GroupId group1ID,
     HashTrainingGroup& group1 = findGroup(group1ID);
     HashTrainingGroup& group2 = findGroup(group2ID);
 
+    //check that the group can fight (active)
+    if(!group1.getGroupFromHeapPointer()->isGroupActive() ||
+            !group2.getGroupFromHeapPointer()->isGroupActive())
+        throw HashTableException::GroupCantFight();
+
     //get top ki score.
     int group1Score = group1.TopKGladsScore(k1);
     int group2Score = group2.TopKGladsScore(k2);

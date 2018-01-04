@@ -30,6 +30,8 @@ public:
     void setHeapPointer(void* pointer);
 
     void* getHeapPointer();
+
+    bool isGroupActive();
 private:
     GroupId id;
     bool isActive;
