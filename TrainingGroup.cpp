@@ -55,6 +55,8 @@ TrainingGroup(ID), root(NULL), groupFromHeap(trainingGroup) {}
 HashTrainingGroup::HashTrainingGroup(HashTrainingGroup &group, TrainingGroup* trainingGroup):
         TrainingGroup(group), root(NULL), groupFromHeap(trainingGroup){
     if(group.root) root = new Node(group.root);
+    //keeping the pointer to the group from heap - only if no pointer was passed to this function
+    if(trainingGroup == NULL) groupFromHeap = group.groupFromHeap;
 }
 
 HashTrainingGroup::~HashTrainingGroup() {
