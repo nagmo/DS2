@@ -44,7 +44,7 @@ public:
      * @param numOfGladiators2
      * @return - pointer to the group that lost.
      */
-    HashTrainingGroup& TrainingGroupFight(GroupId group1ID, GroupId group2ID,
+    HashTrainingGroup* TrainingGroupFight(GroupId group1ID, GroupId group2ID,
                       int numOfGladiators1, int numOfGladiators2);
 
     HashTrainingGroup& GetGroupByIndex(int index);

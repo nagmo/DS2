@@ -28,7 +28,7 @@ public:
      */
     TrainingGroup& getMinGroup();
 
-    void disActiveGroup(int);
+    void deActiveGroup(int);
 
     /**
      * very dangerous!! dont use it!

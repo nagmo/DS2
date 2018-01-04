@@ -25,7 +25,7 @@ bool TrainingGroup::operator<(TrainingGroup& trainingGroup){
     return !(*this > trainingGroup || *this == trainingGroup);
 }
 
-void TrainingGroup::disActivate(){
+void TrainingGroup::deActivate(){
     isActive = false;
 }
 

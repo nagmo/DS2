@@ -24,6 +24,7 @@ public:
 private:
     MinHeap* heapGroup;
     TrainingGroupHashTable* hashGroup;
+    Node* gladiators;
 };
 
 namespace ColosseumException{

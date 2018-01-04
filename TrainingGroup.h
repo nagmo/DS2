@@ -21,7 +21,7 @@ public:
 
     bool operator<(TrainingGroup&);
 
-    void disActivate();
+    void deActivate();
 
     void setIndex(int);
 

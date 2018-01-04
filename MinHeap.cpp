@@ -39,9 +39,9 @@ TrainingGroup& MinHeap::getMinGroup(){
     return data[0];
 }
 
-void MinHeap::disActiveGroup(int i){
+void MinHeap::deActiveGroup(int i){
     //disactivate group
-    data[i].disActivate();
+    data[i].deActivate();
     //sift group down
     siftDown(i);
 }

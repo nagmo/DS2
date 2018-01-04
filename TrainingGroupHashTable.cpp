@@ -75,7 +75,7 @@ void TrainingGroupHashTable::AddGladiatorToTrainingGroup(Gladiator& gladiator,
  * @param numOfGladiators2
  * @return - pointer to the group that lost.
  */
-HashTrainingGroup& TrainingGroupHashTable::TrainingGroupFight(GroupId group1ID,
+HashTrainingGroup* TrainingGroupHashTable::TrainingGroupFight(GroupId group1ID,
                                           GroupId group2ID, int k1, int k2) {
     //find groups
     HashTrainingGroup& group1 = findGroup(group1ID);
@@ -90,11 +90,11 @@ HashTrainingGroup& TrainingGroupHashTable::TrainingGroupFight(GroupId group1ID,
         throw HashTableException::NotEnoghGladiators();
 
     //check who is better and return the looser.
-    if(group1Score > group2Score) return group2;
-    else if(group1Score < group2Score) return group1;
+    if(group1Score > group2Score) return &group2;
+    else if(group1Score < group2Score) return &group1;
 
     //if we got a tie, the winner is the one with the smaller ID.
-    return (group1ID < group2ID) ? group2 : group1;
+    return (group1ID < group2ID) ? &group2 : &group1;
 }
 
 /**

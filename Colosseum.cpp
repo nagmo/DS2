@@ -11,7 +11,8 @@ void validateIds(int n, int* ids){
     }
 }
 
-Colosseum::Colosseum(int n, int* ids) : heapGroup(NULL), hashGroup(NULL){
+Colosseum::Colosseum(int n, int* ids) :
+        heapGroup(NULL), hashGroup(NULL), gladiators(NULL){
     validateIds(n, ids);
     //now ids are valid
     TrainingGroup** groupIds = new TrainingGroup*[n]();
@@ -24,6 +25,7 @@ Colosseum::Colosseum(int n, int* ids) : heapGroup(NULL), hashGroup(NULL){
                 delete groupIds[i-1];
             }
             delete [] groupIds;
+            throw std::bad_alloc(); //TODO: I added a new throw in order for us to know that there was an allocation failure
         }
     }
     //dont check with try because we assume that id are valid
@@ -37,8 +39,17 @@ Colosseum::Colosseum(int n, int* ids) : heapGroup(NULL), hashGroup(NULL){
     HashTrainingGroup** hashTrainingGroups = new HashTrainingGroup*[n];
     DynamicArray<TrainingGroup>* groupFromHeapArray = heapGroup->getDataArray();
     for (int k = 0; k < n; ++k) {
-        //TODO handle memory
-        hashTrainingGroups[k] = new HashTrainingGroup(ids[k], &(*groupFromHeapArray)[k]);
+        try {
+            hashTrainingGroups[k] = new HashTrainingGroup(ids[k],
+                                                          &(*groupFromHeapArray)[k]);
+        }
+        catch (std::bad_alloc&){
+            for(; k > 0; k--){
+                delete hashTrainingGroups[k-1];
+            }
+            delete [] hashTrainingGroups;
+            throw std::bad_alloc();
+        }
     }
     hashGroup = new TrainingGroupHashTable(n, hashTrainingGroups);
     //deleteing hash groups
@@ -74,6 +85,13 @@ void Colosseum::addGroup(GroupId id){
 
 void Colosseum::addGlad(GladiatorID gladiatorID, Level level, GroupId groupId){
     Gladiator gladiator = Gladiator(gladiatorID, level);
+    //add glad to tree
+    try{
+        if(gladiators == NULL) gladiators = new Node(gladiator);
+        else gladiators->AddGladiator(gladiator);
+    }catch(TreeExceptions::GladiatorExists&){
+        throw Failure();
+    }
     //add glad to hash
     try {
         hashGroup->AddGladiatorToTrainingGroup(gladiator, groupId);
@@ -87,7 +105,7 @@ void Colosseum::addGlad(GladiatorID gladiatorID, Level level, GroupId groupId){
 }
 
 void Colosseum::fight(GroupId id1, GroupId id2, int i, int j){
-    HashTrainingGroup trainingGroup;
+    HashTrainingGroup* trainingGroup;
     try{
         trainingGroup = hashGroup->TrainingGroupFight(id1, id2, i, j);
     }
@@ -97,8 +115,8 @@ void Colosseum::fight(GroupId id1, GroupId id2, int i, int j){
     catch (HashTableException::NotEnoghGladiators){
         throw Failure();
     }
-    //disactivate the loosing teem
-    heapGroup->disActiveGroup(trainingGroup.getIndex());
+    //deactivate the loosing teem
+    heapGroup->deActiveGroup((trainingGroup->getGroupFromHeapPointer())->getIndex());
 }
 
 int Colosseum::getMinTrainingGroup(){

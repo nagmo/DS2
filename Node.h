@@ -67,7 +67,7 @@ public:
             }
             right->AddGladiator(gladiator);
             weight++;
-            subTreeScore = left->subTreeScore + right->subTreeScore + (this->gladiator)->GetScore();
+            subTreeScore = calculateSubTreeScore();
             return;
         }
         if(left == NULL){
@@ -82,6 +82,7 @@ public:
     }
 
     int GetTopKScore(int k){
+        if(weight == k) return subTreeScore;
         if(left != NULL){
             if(left->weight == k-1) return subTreeScore;
             else if(left->weight > k-1) return left->GetTopKScore(k);
@@ -89,6 +90,9 @@ public:
                 if (right != NULL)
                     return right->GetTopKScore(k - (left->weight) - 1);
             }
+        }else{
+            if (right != NULL)
+                return right->GetTopKScore(k - 1);
         }
         //in case of failure
         return  0;
@@ -100,6 +104,13 @@ private:
     int subTreeScore;
     Node* left;
     Node* right;
+
+    int calculateSubTreeScore(){
+        int leftScore = 0, rightScore = 0;
+        if(left != NULL) leftScore = left->subTreeScore;
+        if(right != NULL) rightScore = right->subTreeScore;
+        return leftScore+ rightScore + (this->gladiator)->GetScore();
+    }
 };
 
 
