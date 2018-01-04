@@ -99,8 +99,18 @@ namespace DynamicArrayException{
 }
 
 template <class T>
-DynamicArray<T>::DynamicArray(int n) : maxSize(n), numberOfElements(0){
-    data = new T*[n](); //TODO: Yuval - this calls the default constructor for each element in the array. in this case because it's a pointer it puts NULL.
+DynamicArray<T>::DynamicArray(int n) : maxSize(n*4), numberOfElements(0) {
+    data = new T *[maxSize]();
+    //TODO: Yuval - read the following
+    /*
+     * I have changes it so it will create an array 4 times the size
+     * it is given to prevent expand on first set of inserts.
+     * I need to use this constructor in the hash table so that every
+     * item will be places in the correct place by the hash function.
+     *
+     * also good to know -> this sytax ("new T *[maxSize]()") calls the default
+     * constructor for each element in the array. in this case because it's a pointer it puts NULL.
+    */
 }
 
 template <class T>
@@ -127,8 +137,8 @@ DynamicArray<T>::~DynamicArray(){
 template <class T>
 T* DynamicArray<T>::insert(T& newData, int index){
     //case of new data - add 1 to items
-    if(data[index] && (data[index])->isVoid()) numberOfElements++;
-    //delete data[index];
+    if(data[index]== NULL || (data[index])->isVoid()) numberOfElements++;
+    else delete data[index]; //delete data[index] if exists;
     data[index] = new T(newData);
     //check if need expand
     if(numberOfElements >= maxSize/2){

@@ -13,9 +13,12 @@ TrainingGroupHashTable::TrainingGroupHashTable() : array(NULL), sizeOfHashTable(
 TrainingGroupHashTable::TrainingGroupHashTable(int numOfGroups,
                                                HashTrainingGroup** trainingGroups):
 array(NULL),
-sizeOfHashTable(numOfGroups)
+sizeOfHashTable(numOfGroups*4)
 {
-    array = new DynamicArray<HashTrainingGroup>(numOfGroups, trainingGroups);
+    array = new DynamicArray<HashTrainingGroup>(numOfGroups);
+    for(int i=0; i<numOfGroups; i++){
+        AddTrainingGroup(trainingGroups[i]);
+    }
 }
 
 TrainingGroupHashTable::~TrainingGroupHashTable(){
