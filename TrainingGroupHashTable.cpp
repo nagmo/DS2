@@ -167,6 +167,8 @@ void TrainingGroupHashTable::rehash() {
 HashTrainingGroup &TrainingGroupHashTable::GetGroupByIndex(int index) {
     if(array)
         return (*array)[index];
+    //function has to return something (comp warning)
+    throw HashTableException::GroupDoesntExist();
 }
 
 int TrainingGroupHashTable::getGroupIndex(GroupId id) {

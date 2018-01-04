@@ -18,8 +18,9 @@ class Node{
 public:
 
     explicit Node(Gladiator& gladiator, Node* left=NULL, Node* right=NULL):
-            gladiator(new Gladiator(gladiator)), left(left), right(right),
-            weight(1), subTreeScore(gladiator.GetScore()){}
+            gladiator(new Gladiator(gladiator)),weight(1),
+            subTreeScore(gladiator.GetScore()), left(left), right(right)
+            {}
 
     Node(Node* node): gladiator(new Gladiator(*(node->gladiator))),
           weight(node->weight), subTreeScore(node->subTreeScore),
@@ -78,7 +79,9 @@ public:
         }
         left->AddGladiator(gladiator);
         weight++;
-        subTreeScore = left->subTreeScore + right->subTreeScore + (this->gladiator)->GetScore();
+        subTreeScore = (this->gladiator)->GetScore();
+        subTreeScore += (left != NULL) ? left->subTreeScore : 0;
+        subTreeScore += (right != NULL) ?  right->subTreeScore : 0;
     }
 
     int GetTopKScore(int k){

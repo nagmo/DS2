@@ -63,9 +63,9 @@ public:
     TrainingGroup* getGroupFromHeapPointer();
 
 private:
+    Node*  root;
     //pointer to the real group from heap
     TrainingGroup* groupFromHeap;
-    Node*  root;
 };
 
 #endif //DS2_TRAININGGROUP_H
