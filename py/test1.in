@@ -1,0 +1,22 @@
+init 2 0 1
+addTrainingGroup -2
+trainingGroupFight 5 -1 4 5
+trainingGroupFight 7 -1 6 9
+trainingGroupFight 3 6 5 4
+getMinTrainingGroup
+getMinTrainingGroup
+trainingGroupFight 7 6 0 0
+addGladiator 322 831 6
+addGladiator 423 559 -1
+addGladiator 985 2 4
+getMinTrainingGroup
+trainingGroupFight 7 2 8 3
+getMinTrainingGroup
+trainingGroupFight 1 5 8 0
+addGladiator 928 451 1
+getMinTrainingGroup
+addTrainingGroup 8
+getMinTrainingGroup
+addGladiator 233 684 0
+addGladiator 369 974 -1
+quit
