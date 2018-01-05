@@ -101,7 +101,6 @@ namespace DynamicArrayException{
 template <class T>
 DynamicArray<T>::DynamicArray(int n) : maxSize(n*4), numberOfElements(0) {
     data = new T *[maxSize]();
-    //TODO: Yuval - read the following
     /*
      * I have changes it so it will create an array 4 times the size
      * it is given to prevent expand on first set of inserts.
@@ -144,6 +143,8 @@ T* DynamicArray<T>::insert(T& newData, int index){
     if(numberOfElements >= maxSize/2){
         expandArray();
         //TODO if throws exception, return no data - Nevo: didn't get you
+        // I added this because we use the return value of this function, but if was expansion we dont get the value
+        // so I pass the value in the exception class - a little bit ugly..
         throw DynamicArrayException::ArrayExpand(data[index]);
     }
     return (data[index]);

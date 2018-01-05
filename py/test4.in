@@ -1,0 +1,302 @@
+init 2 0 1
+trainingGroupFight 6 0 4 4
+addTrainingGroup 5
+addGladiator 679 614 7
+addGladiator 932 901 -1
+getMinTrainingGroup
+addTrainingGroup -1
+addGladiator 893 153 1
+addGladiator 369 525 8
+addTrainingGroup -1
+addTrainingGroup 4
+addTrainingGroup 2
+trainingGroupFight 7 7 4 4
+addTrainingGroup 3
+addTrainingGroup -2
+trainingGroupFight 1 1 9 8
+getMinTrainingGroup
+trainingGroupFight 5 2 10 1
+addTrainingGroup 5
+getMinTrainingGroup
+addGladiator 588 2 1
+trainingGroupFight 5 -1 7 6
+getMinTrainingGroup
+trainingGroupFight 5 8 10 1
+addGladiator 109 663 0
+addTrainingGroup 8
+getMinTrainingGroup
+getMinTrainingGroup
+addTrainingGroup 0
+addGladiator 259 436 -2
+trainingGroupFight 6 0 2 2
+trainingGroupFight -1 2 7 2
+addGladiator 791 4 5
+getMinTrainingGroup
+addGladiator 63 496 7
+addTrainingGroup 5
+trainingGroupFight 7 1 9 7
+addTrainingGroup 4
+addTrainingGroup 1
+addGladiator 546 880 8
+addGladiator 556 733 1
+getMinTrainingGroup
+addGladiator 404 871 -2
+trainingGroupFight 8 4 5 -1
+getMinTrainingGroup
+addTrainingGroup 8
+trainingGroupFight -1 7 10 4
+getMinTrainingGroup
+getMinTrainingGroup
+addGladiator 515 523 0
+addGladiator 343 294 1
+addTrainingGroup -2
+addTrainingGroup -2
+addTrainingGroup 4
+addGladiator 376 782 4
+getMinTrainingGroup
+addTrainingGroup 6
+addTrainingGroup 4
+addGladiator 783 832 3
+getMinTrainingGroup
+trainingGroupFight 5 4 10 7
+addTrainingGroup 6
+trainingGroupFight 5 -1 -1 2
+getMinTrainingGroup
+addGladiator 656 393 4
+addTrainingGroup 4
+getMinTrainingGroup
+addTrainingGroup 1
+addGladiator 30 153 -1
+trainingGroupFight 8 0 8 6
+getMinTrainingGroup
+addGladiator 180 191 8
+addTrainingGroup -1
+getMinTrainingGroup
+addTrainingGroup 7
+trainingGroupFight 2 7 0 9
+trainingGroupFight 7 7 10 9
+trainingGroupFight 0 5 8 0
+getMinTrainingGroup
+addGladiator 137 815 2
+getMinTrainingGroup
+getMinTrainingGroup
+getMinTrainingGroup
+addGladiator 370 718 -2
+addTrainingGroup 4
+addGladiator 912 453 5
+addGladiator 229 824 -2
+addTrainingGroup 4
+trainingGroupFight 3 2 2 4
+addGladiator 6 817 2
+addGladiator 793 551 -1
+getMinTrainingGroup
+addGladiator 367 117 6
+addTrainingGroup 7
+getMinTrainingGroup
+getMinTrainingGroup
+addGladiator 960 764 0
+trainingGroupFight 1 1 0 1
+getMinTrainingGroup
+getMinTrainingGroup
+addGladiator 987 128 2
+trainingGroupFight 4 3 10 1
+trainingGroupFight 2 4 -1 0
+trainingGroupFight 3 7 5 10
+getMinTrainingGroup
+trainingGroupFight -1 -1 2 -1
+trainingGroupFight 3 1 2 5
+trainingGroupFight 5 3 7 7
+addTrainingGroup 1
+getMinTrainingGroup
+getMinTrainingGroup
+trainingGroupFight 3 -1 2 1
+trainingGroupFight 1 1 0 7
+trainingGroupFight 6 7 4 2
+addGladiator 517 817 7
+getMinTrainingGroup
+trainingGroupFight 4 4 1 10
+addTrainingGroup 1
+addTrainingGroup 8
+trainingGroupFight 0 3 5 4
+getMinTrainingGroup
+addGladiator 274 112 5
+addGladiator 702 221 7
+addTrainingGroup 5
+addTrainingGroup 0
+addTrainingGroup 4
+trainingGroupFight 4 3 8 0
+getMinTrainingGroup
+trainingGroupFight 1 -1 6 3
+addTrainingGroup 8
+addTrainingGroup 2
+getMinTrainingGroup
+getMinTrainingGroup
+trainingGroupFight 5 1 3 8
+addTrainingGroup 4
+trainingGroupFight 0 5 3 -1
+addGladiator 311 565 3
+getMinTrainingGroup
+getMinTrainingGroup
+trainingGroupFight 3 0 0 6
+getMinTrainingGroup
+trainingGroupFight 3 1 4 8
+addGladiator 934 432 2
+addTrainingGroup 6
+trainingGroupFight 0 3 6 1
+addGladiator 957 394 4
+getMinTrainingGroup
+getMinTrainingGroup
+addGladiator 163 394 3
+addGladiator 788 916 -2
+addGladiator 245 485 4
+addGladiator 663 229 8
+addTrainingGroup 1
+addGladiator 520 926 -2
+getMinTrainingGroup
+addGladiator 531 1 -1
+addTrainingGroup -2
+addTrainingGroup 0
+addGladiator 710 496 5
+trainingGroupFight 4 8 9 2
+addGladiator 509 569 2
+addTrainingGroup -1
+addTrainingGroup 3
+getMinTrainingGroup
+getMinTrainingGroup
+addGladiator 166 461 8
+trainingGroupFight 3 0 3 0
+addGladiator 856 -2 7
+addTrainingGroup 4
+addTrainingGroup 7
+addGladiator 178 351 8
+addTrainingGroup 5
+getMinTrainingGroup
+trainingGroupFight 4 5 -1 3
+addGladiator 707 375 -2
+addTrainingGroup -2
+getMinTrainingGroup
+addGladiator 386 177 6
+addTrainingGroup 7
+addGladiator 179 -10 8
+addTrainingGroup 5
+trainingGroupFight 3 6 2 6
+addGladiator 552 624 -2
+addTrainingGroup -2
+trainingGroupFight 5 1 9 6
+getMinTrainingGroup
+addTrainingGroup 8
+trainingGroupFight 8 8 10 0
+addTrainingGroup 3
+addTrainingGroup 0
+getMinTrainingGroup
+addGladiator 637 40 -2
+getMinTrainingGroup
+trainingGroupFight 6 8 -1 4
+addGladiator 597 291 5
+getMinTrainingGroup
+addTrainingGroup 5
+addGladiator 857 7 -1
+getMinTrainingGroup
+trainingGroupFight 3 1 7 2
+trainingGroupFight 3 -1 9 6
+addGladiator 194 77 3
+addGladiator 746 235 2
+getMinTrainingGroup
+addGladiator 859 195 -1
+trainingGroupFight -1 0 1 0
+addTrainingGroup 8
+trainingGroupFight 1 1 2 5
+trainingGroupFight -1 3 8 -1
+addTrainingGroup -2
+getMinTrainingGroup
+addGladiator 590 791 0
+trainingGroupFight 5 4 3 2
+addTrainingGroup -2
+getMinTrainingGroup
+addTrainingGroup 6
+addGladiator 606 382 6
+trainingGroupFight 5 3 10 6
+addTrainingGroup 4
+getMinTrainingGroup
+addGladiator 818 540 5
+addTrainingGroup 1
+getMinTrainingGroup
+addGladiator 863 411 8
+addGladiator 226 148 0
+addGladiator 203 89 5
+trainingGroupFight 8 2 9 5
+addTrainingGroup 0
+getMinTrainingGroup
+addTrainingGroup -1
+addGladiator 115 728 5
+addGladiator 82 51 -2
+addGladiator 203 877 -1
+addTrainingGroup 3
+addTrainingGroup 6
+getMinTrainingGroup
+getMinTrainingGroup
+trainingGroupFight 5 1 3 7
+addTrainingGroup 6
+trainingGroupFight 5 2 4 -1
+addTrainingGroup 1
+getMinTrainingGroup
+getMinTrainingGroup
+addTrainingGroup 8
+getMinTrainingGroup
+trainingGroupFight 5 -1 0 10
+getMinTrainingGroup
+getMinTrainingGroup
+trainingGroupFight -1 2 3 8
+getMinTrainingGroup
+getMinTrainingGroup
+getMinTrainingGroup
+getMinTrainingGroup
+trainingGroupFight 6 0 -1 0
+getMinTrainingGroup
+addTrainingGroup 4
+addTrainingGroup 0
+trainingGroupFight 3 4 0 7
+trainingGroupFight -1 1 9 1
+addGladiator 474 196 8
+getMinTrainingGroup
+addTrainingGroup 5
+trainingGroupFight 4 5 0 9
+trainingGroupFight -1 8 6 8
+getMinTrainingGroup
+trainingGroupFight 8 6 0 5
+addGladiator 218 867 6
+trainingGroupFight 8 2 4 3
+addTrainingGroup 1
+addGladiator 127 460 3
+getMinTrainingGroup
+addGladiator 800 250 0
+addTrainingGroup 4
+addGladiator 699 456 4
+addGladiator 299 730 5
+trainingGroupFight 4 0 4 2
+getMinTrainingGroup
+getMinTrainingGroup
+getMinTrainingGroup
+addGladiator 645 349 0
+addTrainingGroup 1
+addGladiator 333 485 -2
+addTrainingGroup 4
+trainingGroupFight 0 1 7 2
+getMinTrainingGroup
+addTrainingGroup 0
+addGladiator 870 73 0
+getMinTrainingGroup
+addGladiator 354 383 -1
+addTrainingGroup 2
+addGladiator 366 592 2
+addTrainingGroup 8
+getMinTrainingGroup
+addTrainingGroup 3
+addTrainingGroup -1
+addTrainingGroup -1
+addGladiator 964 763 5
+getMinTrainingGroup
+addGladiator 291 815 -2
+trainingGroupFight 4 3 6 0
+trainingGroupFight 1 0 3 8
+quit

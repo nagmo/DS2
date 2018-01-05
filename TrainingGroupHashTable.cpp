@@ -59,6 +59,7 @@ int TrainingGroupHashTable::AddTrainingGroup(HashTrainingGroup* trainingGroup) {
  */
 void TrainingGroupHashTable::AddGladiatorToTrainingGroup(Gladiator& gladiator,
                                                     GroupId groupID) {
+    gladiator.setSortByScore(true);
     try {
         findGroup(groupID).addGladiator(gladiator);
     }catch(TreeExceptions::GladiatorExists&){

@@ -62,6 +62,7 @@ void MinHeap::siftDown(int i){
 }
 
 void MinHeap::siftUp(int i){
+    data[i].setIndex(i);
     while (data[i] < data[i/2]){
         //set the new index of the group
         data[i].setIndex(i/2);

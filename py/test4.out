@@ -210,7 +210,7 @@ trainingGroupFight: INVALID_INPUT
 addTrainingGroup: INVALID_INPUT
 getMinTrainingGroup: SUCCESS 0
 addGladiator: SUCCESS
-trainingGroupFight: FAILURE
+trainingGroupFight: SUCCESS
 addTrainingGroup: INVALID_INPUT
 getMinTrainingGroup: SUCCESS 0
 addTrainingGroup: FAILURE
@@ -265,7 +265,7 @@ trainingGroupFight: INVALID_INPUT
 getMinTrainingGroup: SUCCESS 0
 trainingGroupFight: INVALID_INPUT
 addGladiator: SUCCESS
-trainingGroupFight: FAILURE
+trainingGroupFight: SUCCESS
 addTrainingGroup: FAILURE
 addGladiator: SUCCESS
 getMinTrainingGroup: SUCCESS 0
