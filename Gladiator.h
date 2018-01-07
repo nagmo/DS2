@@ -31,10 +31,12 @@ public:
      */
     bool operator>(Gladiator& gladiator);
 
+    Gladiator& setSortByScore(bool);
 private:
 
     GladiatorID id;
     int score;
+    bool sortByScore;
 };
 
 #endif //DS2_GLADIATOR_H

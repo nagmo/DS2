@@ -1,0 +1,202 @@
+init done.
+getMinTrainingGroup: SUCCESS 0
+addGladiator: FAILURE
+addTrainingGroup: INVALID_INPUT
+addGladiator: FAILURE
+addGladiator: FAILURE
+addTrainingGroup: SUCCESS
+trainingGroupFight: FAILURE
+addTrainingGroup: SUCCESS
+addTrainingGroup: SUCCESS
+addGladiator: FAILURE
+addGladiator: SUCCESS
+trainingGroupFight: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+addGladiator: FAILURE
+addGladiator: FAILURE
+trainingGroupFight: FAILURE
+trainingGroupFight: INVALID_INPUT
+trainingGroupFight: FAILURE
+getMinTrainingGroup: SUCCESS 0
+addGladiator: FAILURE
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+addGladiator: FAILURE
+addTrainingGroup: FAILURE
+addTrainingGroup: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: FAILURE
+addGladiator: FAILURE
+addTrainingGroup: SUCCESS
+trainingGroupFight: INVALID_INPUT
+addGladiator: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+addGladiator: FAILURE
+addTrainingGroup: FAILURE
+trainingGroupFight: FAILURE
+trainingGroupFight: FAILURE
+addTrainingGroup: FAILURE
+addGladiator: SUCCESS
+addGladiator: INVALID_INPUT
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: SUCCESS
+addTrainingGroup: SUCCESS
+addGladiator: SUCCESS
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: FAILURE
+trainingGroupFight: INVALID_INPUT
+trainingGroupFight: FAILURE
+addGladiator: SUCCESS
+addGladiator: INVALID_INPUT
+addGladiator: SUCCESS
+addGladiator: INVALID_INPUT
+addTrainingGroup: INVALID_INPUT
+trainingGroupFight: FAILURE
+addTrainingGroup: FAILURE
+addGladiator: FAILURE
+addGladiator: SUCCESS
+getMinTrainingGroup: SUCCESS 0
+addGladiator: SUCCESS
+addGladiator: SUCCESS
+trainingGroupFight: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: INVALID_INPUT
+trainingGroupFight: INVALID_INPUT
+addGladiator: SUCCESS
+addGladiator: SUCCESS
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: INVALID_INPUT
+addTrainingGroup: SUCCESS
+trainingGroupFight: FAILURE
+trainingGroupFight: FAILURE
+trainingGroupFight: FAILURE
+addGladiator: SUCCESS
+addGladiator: SUCCESS
+addTrainingGroup: INVALID_INPUT
+addGladiator: SUCCESS
+addTrainingGroup: FAILURE
+addGladiator: SUCCESS
+addGladiator: SUCCESS
+trainingGroupFight: FAILURE
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: FAILURE
+trainingGroupFight: INVALID_INPUT
+trainingGroupFight: INVALID_INPUT
+trainingGroupFight: FAILURE
+addGladiator: SUCCESS
+trainingGroupFight: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: FAILURE
+addTrainingGroup: FAILURE
+addTrainingGroup: INVALID_INPUT
+trainingGroupFight: INVALID_INPUT
+addTrainingGroup: FAILURE
+trainingGroupFight: FAILURE
+trainingGroupFight: FAILURE
+addGladiator: SUCCESS
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+addGladiator: SUCCESS
+addGladiator: INVALID_INPUT
+trainingGroupFight: FAILURE
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: FAILURE
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+addGladiator: SUCCESS
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+trainingGroupFight: FAILURE
+addTrainingGroup: FAILURE
+addGladiator: SUCCESS
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: FAILURE
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+addTrainingGroup: INVALID_INPUT
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+trainingGroupFight: FAILURE
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: INVALID_INPUT
+addGladiator: SUCCESS
+addTrainingGroup: INVALID_INPUT
+addGladiator: SUCCESS
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+addGladiator: SUCCESS
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: FAILURE
+addGladiator: SUCCESS
+addTrainingGroup: INVALID_INPUT
+addGladiator: SUCCESS
+trainingGroupFight: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+addGladiator: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: FAILURE
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: FAILURE
+trainingGroupFight: INVALID_INPUT
+trainingGroupFight: INVALID_INPUT
+addGladiator: SUCCESS
+addTrainingGroup: FAILURE
+addGladiator: SUCCESS
+addGladiator: SUCCESS
+trainingGroupFight: FAILURE
+addGladiator: SUCCESS
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+addGladiator: SUCCESS
+addGladiator: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+getMinTrainingGroup: SUCCESS 0
+addTrainingGroup: INVALID_INPUT
+addGladiator: FAILURE
+trainingGroupFight: INVALID_INPUT
+addTrainingGroup: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 0
+getMinTrainingGroup: SUCCESS 0
+trainingGroupFight: SUCCESS
+addTrainingGroup: FAILURE
+trainingGroupFight: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 1
+getMinTrainingGroup: SUCCESS 1
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 1
+trainingGroupFight: INVALID_INPUT
+addTrainingGroup: INVALID_INPUT
+trainingGroupFight: INVALID_INPUT
+trainingGroupFight: FAILURE
+addGladiator: INVALID_INPUT
+getMinTrainingGroup: SUCCESS 1
+trainingGroupFight: FAILURE
+addTrainingGroup: FAILURE
+getMinTrainingGroup: SUCCESS 1
+getMinTrainingGroup: SUCCESS 1
+addGladiator: SUCCESS
+getMinTrainingGroup: SUCCESS 1
+addTrainingGroup: FAILURE
+quit done.

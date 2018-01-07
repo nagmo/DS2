@@ -100,7 +100,23 @@ public:
         //in case of failure
         return  0;
     }
-
+//
+//    bool gladiatorExists(Gladiator& gladiator){
+//        //if gladiator exist throw exception
+//        if(gladiator == *(this->gladiator))
+//            return true;
+//        //find the place for the gladiator.
+//        if(gladiator > *(this->gladiator)){
+//            if(right == NULL){
+//                return false;
+//            }
+//            return right->gladiatorExists(gladiator);
+//        }
+//        if(left == NULL){
+//            return false;
+//        }
+//        return left->gladiatorExists(gladiator);
+//    }
 private:
     Gladiator* gladiator;
     int weight;

@@ -88,7 +88,16 @@ void Colosseum::addGlad(GladiatorID gladiatorID, Level level, GroupId groupId){
     //add glad to tree
     try{
         if(gladiators == NULL) gladiators = new Node(gladiator);
-        else gladiators->AddGladiator(gladiator);
+        else{
+            try{
+                hashGroup->getGroupIndex(groupId);
+                gladiators->AddGladiator(gladiator);
+            }
+                //if group doesnt exist dont add glad
+            catch (HashTableException::GroupDoesntExist&){
+                throw Failure();
+            }
+        }
     }catch(TreeExceptions::GladiatorExists&){
         throw Failure();
     }
