@@ -77,7 +77,7 @@ void HashTrainingGroup::addGladiator(Gladiator& gladiator) {
 }
 
 int HashTrainingGroup::TopKGladsScore(int k) {
-    if(root == NULL) return 0;
+    if(root == NULL) return -1;
     return (root->GetTopKScore(k));
 }
 

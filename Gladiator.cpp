@@ -29,7 +29,7 @@ bool Gladiator::operator==(Gladiator& gladiator){
 bool Gladiator::operator<(Gladiator& gladiator){
         //TODO check if it is right
         return (sortByScore) ?
-               ((score == gladiator.score) ? (id > gladiator.id) : (score < gladiator.score))
+               ((score == gladiator.score) ? (id < gladiator.id) : (score > gladiator.score))
                              : (id < gladiator.id);
     }
 /**

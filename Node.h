@@ -87,22 +87,26 @@ public:
     int GetTopKScore(int k){
         //if(weight == k) return subTreeScore;
         if(left != NULL){
-            if(left->weight == k-1) return subTreeScore;
+            if(left->weight == k-1) return subTreeScore - ((right == NULL) ? 0 : right->subTreeScore);
             else if(left->weight > k-1) return left->GetTopKScore(k);
             else {
                 if (right != NULL)
-                    return right->GetTopKScore(k - (left->weight) - 1);
+                    return right->GetTopKScore(k - (left->weight) - 1) + subTreeScore - right->subTreeScore;
+                else{
+                    //if left is null consider it to be zero.
+                    if(k == 1) return subTreeScore;
+                }
             }
         }else{
             //if left is null consider it to be zero.
-            if(k==1) return subTreeScore;
+            if(k==1) return subTreeScore - ((right == NULL) ? 0 : right->subTreeScore);
             else {
                 if (right != NULL)
-                    return right->GetTopKScore(k - 1);
+                    return right->GetTopKScore(k - 1) + subTreeScore - right->subTreeScore;
             }
         }
         //in case of failure
-        return  0;
+        return  -1;
     }
 //
 //    bool gladiatorExists(Gladiator& gladiator){

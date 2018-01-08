@@ -135,7 +135,14 @@ void Colosseum::fight(GroupId id1, GroupId id2, int i, int j){
 }
 
 int Colosseum::getMinTrainingGroup(){
-    TrainingGroup& trainingGroup = heapGroup->getMinGroup();
-    if(trainingGroup.isVoid()) throw Failure();
-    return trainingGroup.GetID();
+    TrainingGroup* trainingGroup = NULL;
+    try {
+        TrainingGroup& bestTrainingGroup = heapGroup->getMinGroup();
+        trainingGroup = &bestTrainingGroup;
+    }
+    catch (MinHeapExceptions::FailureException&){
+        throw Failure();
+    }
+    if(trainingGroup == NULL || trainingGroup->isVoid()) throw Failure();
+    return trainingGroup->GetID();
 }

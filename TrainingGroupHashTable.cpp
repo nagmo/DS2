@@ -92,7 +92,7 @@ HashTrainingGroup* TrainingGroupHashTable::TrainingGroupFight(GroupId group1ID,
     int group2Score = group2.TopKGladsScore(k2);
 
     //check for failure (not enough gladiators)
-    if(group1Score == 0 || group2Score == 0)
+    if(group1Score == -1 || group2Score == -1)
         throw HashTableException::NotEnoghGladiators();
 
     //check who is better and return the looser.
