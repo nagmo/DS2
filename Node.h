@@ -90,8 +90,10 @@ public:
             if(left->weight == k-1) return subTreeScore - ((right == NULL) ? 0 : right->subTreeScore);
             else if(left->weight > k-1) return left->GetTopKScore(k);
             else {
-                if (right != NULL)
-                    return right->GetTopKScore(k - (left->weight) - 1) + subTreeScore - right->subTreeScore;
+                if (right != NULL){
+                    int temp = right->GetTopKScore(k - (left->weight) - 1);
+                    return (temp == -1)? -1: temp + subTreeScore - right->subTreeScore;
+                }
                 else{
                     //if left is null consider it to be zero.
                     if(k == 1) return subTreeScore;
@@ -101,8 +103,10 @@ public:
             //if left is null consider it to be zero.
             if(k==1) return subTreeScore - ((right == NULL) ? 0 : right->subTreeScore);
             else {
-                if (right != NULL)
-                    return right->GetTopKScore(k - 1) + subTreeScore - right->subTreeScore;
+                if (right != NULL){
+                    int temp = right->GetTopKScore(k - 1);
+                    return (temp == -1)? -1 : temp + subTreeScore - right->subTreeScore;
+                }
             }
         }
         //in case of failure
