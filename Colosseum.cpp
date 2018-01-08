@@ -114,6 +114,9 @@ void Colosseum::addGlad(GladiatorID gladiatorID, Level level, GroupId groupId){
 }
 
 void Colosseum::fight(GroupId id1, GroupId id2, int i, int j){
+    //check if ID's are the same
+    if(id1 == id2) throw Failure();
+
     HashTrainingGroup* trainingGroup;
     try{
         trainingGroup = hashGroup->TrainingGroupFight(id1, id2, i, j);
