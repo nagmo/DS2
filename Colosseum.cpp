@@ -40,7 +40,7 @@ Colosseum::Colosseum(int n, int* ids) :
     DynamicArray<TrainingGroup>* groupFromHeapArray = heapGroup->getDataArray();
     for (int k = 0; k < n; ++k) {
         try {
-            hashTrainingGroups[k] = new HashTrainingGroup(ids[k],
+            hashTrainingGroups[k] = new HashTrainingGroup((*groupFromHeapArray)[k].GetID(),
                                                           &(*groupFromHeapArray)[k]);
         }
         catch (std::bad_alloc&){
